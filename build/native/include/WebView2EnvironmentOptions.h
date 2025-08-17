@@ -30,7 +30,7 @@
 #include <wrl/implements.h>
 
 #include "WebView2.h"
-#define CORE_WEBVIEW_TARGET_PRODUCT_VERSION L"140.0.3415.0"
+#define CORE_WEBVIEW_TARGET_PRODUCT_VERSION L"140.0.3477.0"
 
 #define COREWEBVIEW2ENVIRONMENTOPTIONS_STRING_PROPERTY(p)     \
  public:                                                      \
@@ -244,12 +244,10 @@ class CoreWebView2EnvironmentOptionsBase
           ICoreWebView2EnvironmentOptions7,
           ICoreWebView2EnvironmentOptions8> {
  public:
-  static const COREWEBVIEW2_RELEASE_CHANNELS kInternalChannel =
-      static_cast<COREWEBVIEW2_RELEASE_CHANNELS>(1 << 4);
   static const COREWEBVIEW2_RELEASE_CHANNELS kAllChannels =
       COREWEBVIEW2_RELEASE_CHANNELS_STABLE |
       COREWEBVIEW2_RELEASE_CHANNELS_BETA | COREWEBVIEW2_RELEASE_CHANNELS_DEV |
-      COREWEBVIEW2_RELEASE_CHANNELS_CANARY | kInternalChannel;
+      COREWEBVIEW2_RELEASE_CHANNELS_CANARY;
 
   CoreWebView2EnvironmentOptionsBase() {
     // Initialize the target compatible browser version value to the version

@@ -988,9 +988,6 @@
         <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2ReleaseChannels.Canary">
             <summary>The Canary release channel that is released daily.</summary>
         </member>
-        <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2ReleaseChannels.Internal">
-            <summary>TODO(task.ms/58123561): Pump Sheriff: Remove internal channel from CoreWebView2ReleaseChannels in environment.idl</summary>
-        </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2RestartRequestedPriority">
             <summary>Specifies the restart requested priority level.</summary>
         </member>
@@ -2310,7 +2307,7 @@
         <member name="E:Microsoft.Web.WebView2.Core.CoreWebView2.DedicatedWorkerCreated">
             <summary>Subscribe to this event that gets raised when a new dedicated worker is created.
             
-            A Dedicated Worker is a type of web worker that allow you to run Javascript
+            A Dedicated Worker is a type of web worker that allows you to run Javascript
             code in the background without blocking the main thread, making them useful
             for tasks like heavy computations, data processing, and parallel execution.
             It is "dedicated" because it is linked to a single parent document and cannot
@@ -3691,7 +3688,7 @@
             <summary>Subscribe to this event that gets raised when a new dedicated worker is created from a
             dedicated worker.
             
-            A Dedicated Worker is a type of web worker that allow you to run Javascript
+            A Dedicated Worker is a type of web worker that allows you to run Javascript
             code in the background without blocking the main thread, making them useful
             for tasks like heavy computations, data processing, and parallel execution.
             It is "dedicated" because it is linked to a single parent document and cannot
@@ -3749,8 +3746,11 @@
             self.chrome.webview.addEventListener('message', handler)
             self.chrome.webview.removeEventListener('message', handler)
             ```
-            See also the equivalent methods: `ICoreWebView2::PostWebMessageAsJson`
-            and `ICoreWebView2Frame::PostWebMessageAsJson`
+            ```cpp
+            See also the equivalent methods: `ICoreWebView2::PostWebMessageAsJson`,
+            `ICoreWebView2Frame::PostWebMessageAsJson`,
+            `ICoreWebView2ServiceWorker::PostWebMessageAsJson`.
+            ```
             
             </summary>
         </member>
@@ -3763,8 +3763,11 @@
             `PostWebMessageAsJson` if you want to communicate using simple strings
             rather than JSON objects. Please see `PostWebMessageAsJson` for
             additional information.
-            See also the equivalent methods: `ICoreWebView2::PostWebMessageAsString`
-            and `ICoreWebView2Frame::PostWebMessageAsString`</summary>
+            ```cpp
+            See also the equivalent methods: `ICoreWebView2::PostWebMessageAsString`,
+            `ICoreWebView2Frame::PostWebMessageAsString`,
+            `ICoreWebView2ServiceWorker::PostWebMessageAsString`.
+            ```</summary>
         </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2DedicatedWorkerCreatedEventArgs">
             <summary></summary>
@@ -5107,7 +5110,7 @@
             <summary>Subscribe to this event that gets raised when a new dedicated worker is created
             from an iframe.
             
-            A Dedicated Worker is a type of web worker that allow you to run Javascript
+            A Dedicated Worker is a type of web worker that allows you to run Javascript
             code in the background without blocking the main thread, making them useful
             for tasks like heavy computations, data processing, and parallel execution.
             It is "dedicated" because it is linked to a single parent document and cannot
@@ -6623,8 +6626,11 @@
             self.chrome.webview.addEventListener('message', handler)
             self.chrome.webview.removeEventListener('message', handler)
             ```
-            See also the equivalent methods: `ICoreWebView2::PostWebMessageAsJson`
-            and `ICoreWebView2Frame::PostWebMessageAsJson`
+            ```cpp
+            See also the equivalent methods: `ICoreWebView2::PostWebMessageAsJson`,
+            `ICoreWebView2Frame::PostWebMessageAsJson`,
+            `ICoreWebView2DedicatedWorker::PostWebMessageAsJson`.
+            ```
             
             </summary>
         </member>
@@ -6637,8 +6643,11 @@
             `PostWebMessageAsJson` if you want to communicate using simple strings
             rather than JSON objects. Please see `PostWebMessageAsJson` for
             additional information.
+            ```cpp
             See also the equivalent methods: `ICoreWebView2::PostWebMessageAsString`
-            and `ICoreWebView2Frame::PostWebMessageAsString`</summary>
+            `ICoreWebView2Frame::PostWebMessageAsString`,
+            `ICoreWebView2DedicatedWorker::PostWebMessageAsString`.
+            ```</summary>
         </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2ServiceWorkerActivatedEventArgs">
             <summary></summary>
@@ -6723,7 +6732,7 @@
             that specifies the range of URLs a service worker can control.
             
             When registering a service worker, if no scope is specified, it defaults to the
-            directory of the service worker script resides. For example, if the script is
+            directory where the service worker script resides. For example, if the script is
             located at https://example.com/app/sw.js, the default `scopeUri` would be
             https://example.com/app/. However, if a scope is provided, it is defined relative
             to the application's base URI. For instance, if an application at

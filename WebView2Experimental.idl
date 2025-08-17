@@ -500,10 +500,10 @@ interface ICoreWebView2ExperimentalDedicatedWorkerWebMessageReceivedEventHandler
 }
 
 
-/// This interface represents a dedicated worker in WebView2 and provides methods 
-/// and properties for interacting with it, such as getting the script uri, posting 
-/// messages and managing events related to the creation of child workers and the workerâ€™s 
-/// termination.
+/// This interface represents a dedicated worker in WebView2 and provides methods
+/// and properties for interacting with it, such as getting the script uri,
+/// posting messages, managing events related to the creation of child workers,
+/// termination etc.
 [uuid(66833876-edba-5a60-8508-7da64504a9d2), object, pointer_default(unique)]
 interface ICoreWebView2ExperimentalDedicatedWorker : IUnknown {
   /// A string representing the Uri of the script that the worker is executing.
@@ -530,7 +530,7 @@ interface ICoreWebView2ExperimentalDedicatedWorker : IUnknown {
   /// Subscribe to this event that gets raised when a new dedicated worker is created from a
   /// dedicated worker.
   /// 
-  /// A Dedicated Worker is a type of web worker that allow you to run Javascript
+  /// A Dedicated Worker is a type of web worker that allows you to run Javascript
   /// code in the background without blocking the main thread, making them useful
   /// for tasks like heavy computations, data processing, and parallel execution.
   /// It is "dedicated" because it is linked to a single parent document and cannot
@@ -610,8 +610,11 @@ interface ICoreWebView2ExperimentalDedicatedWorker : IUnknown {
   /// self.chrome.webview.addEventListener('message', handler)
   /// self.chrome.webview.removeEventListener('message', handler)
   /// ```
-  /// See also the equivalent methods: `ICoreWebView2::PostWebMessageAsJson`
-  /// and `ICoreWebView2Frame::PostWebMessageAsJson`
+  /// ```cpp
+  /// See also the equivalent methods: `ICoreWebView2::PostWebMessageAsJson`,
+  /// `ICoreWebView2Frame::PostWebMessageAsJson`,
+  /// `ICoreWebView2ServiceWorker::PostWebMessageAsJson`.
+  /// ```
   /// 
   /// 
   /// \snippet ScenarioDedicatedWorkerPostMessage.cpp PostWebMessageAsJson
@@ -627,8 +630,11 @@ interface ICoreWebView2ExperimentalDedicatedWorker : IUnknown {
   /// `PostWebMessageAsJson` if you want to communicate using simple strings
   /// rather than JSON objects. Please see `PostWebMessageAsJson` for
   /// additional information.
-  /// See also the equivalent methods: `ICoreWebView2::PostWebMessageAsString`
-  /// and `ICoreWebView2Frame::PostWebMessageAsString`
+  /// ```cpp
+  /// See also the equivalent methods: `ICoreWebView2::PostWebMessageAsString`,
+  /// `ICoreWebView2Frame::PostWebMessageAsString`,
+  /// `ICoreWebView2ServiceWorker::PostWebMessageAsString`.
+  /// ```
   HRESULT PostWebMessageAsString(
       [in] LPCWSTR webMessageAsString
   );
@@ -955,7 +961,7 @@ interface ICoreWebView2ExperimentalFrame9 : IUnknown {
   /// Subscribe to this event that gets raised when a new dedicated worker is created
   /// from an iframe.
   /// 
-  /// A Dedicated Worker is a type of web worker that allow you to run Javascript
+  /// A Dedicated Worker is a type of web worker that allows you to run Javascript
   /// code in the background without blocking the main thread, making them useful
   /// for tasks like heavy computations, data processing, and parallel execution.
   /// It is "dedicated" because it is linked to a single parent document and cannot
@@ -1031,7 +1037,7 @@ interface ICoreWebView2ExperimentalServiceWorkerWebMessageReceivedEventHandler :
 
 
 /// This interface represents a service worker in WebView2 and provides methods and properties
-/// for interacting with it, such as getting the script uri, posting messages to it.
+/// for interacting with it, such as getting the script uri, posting messages to it etc.
 [uuid(245a7bb7-7c31-582d-95ee-0f2d99d2f5b0), object, pointer_default(unique)]
 interface ICoreWebView2ExperimentalServiceWorker : IUnknown {
   /// A string representing the Uri of the script that the worker is executing.
@@ -1116,8 +1122,11 @@ interface ICoreWebView2ExperimentalServiceWorker : IUnknown {
   /// self.chrome.webview.addEventListener('message', handler)
   /// self.chrome.webview.removeEventListener('message', handler)
   /// ```
-  /// See also the equivalent methods: `ICoreWebView2::PostWebMessageAsJson`
-  /// and `ICoreWebView2Frame::PostWebMessageAsJson`
+  /// ```cpp
+  /// See also the equivalent methods: `ICoreWebView2::PostWebMessageAsJson`,
+  /// `ICoreWebView2Frame::PostWebMessageAsJson`,
+  /// `ICoreWebView2DedicatedWorker::PostWebMessageAsJson`.
+  /// ```
   /// 
   /// 
   /// \snippet ScenarioServiceWorkerPostMessage.cpp PostWebMessageAsJson
@@ -1133,8 +1142,11 @@ interface ICoreWebView2ExperimentalServiceWorker : IUnknown {
   /// `PostWebMessageAsJson` if you want to communicate using simple strings
   /// rather than JSON objects. Please see `PostWebMessageAsJson` for
   /// additional information.
+  /// ```cpp
   /// See also the equivalent methods: `ICoreWebView2::PostWebMessageAsString`
-  /// and `ICoreWebView2Frame::PostWebMessageAsString`
+  /// `ICoreWebView2Frame::PostWebMessageAsString`,
+  /// `ICoreWebView2DedicatedWorker::PostWebMessageAsString`.
+  /// ```
   HRESULT PostWebMessageAsString(
       [in] LPCWSTR webMessageAsString
   );
@@ -1289,9 +1301,9 @@ interface ICoreWebView2ExperimentalServiceWorkerRegistrationUnregisteringEventHa
 }
 
 
-/// This interface represents a service worker registration in WebView2 and provides methods 
-/// and properties for interacting with it, such as getting the scope uri, active service worker, 
-/// listening for service worker activation and unregistering events.
+/// This interface represents a service worker registration in WebView2 and provides methods
+/// and properties for interacting with it, such as getting the scope uri, active service worker,
+/// listening for service worker activation, unregistering events etc.
 [uuid(06003f5e-af92-5e7e-b497-3fa167dd37c2), object, pointer_default(unique)]
 interface ICoreWebView2ExperimentalServiceWorkerRegistration : IUnknown {
   /// The active service worker that was created. If there is no active service worker,
@@ -1323,7 +1335,7 @@ interface ICoreWebView2ExperimentalServiceWorkerRegistration : IUnknown {
   /// that specifies the range of URLs a service worker can control.
   /// 
   /// When registering a service worker, if no scope is specified, it defaults to the
-  /// directory of the service worker script resides. For example, if the script is
+  /// directory where the service worker script resides. For example, if the script is
   /// located at https://example.com/app/sw.js, the default `scopeUri` would be
   /// https://example.com/app/. However, if a scope is provided, it is defined relative
   /// to the application's base URI. For instance, if an application at
@@ -1537,9 +1549,9 @@ interface ICoreWebView2ExperimentalSharedWorkerDestroyingEventHandler : IUnknown
 }
 
 
-/// This interface represents a shared worker in WebView2 and provides methods and 
-/// properties for interacting with it, such as listening to destroying events and 
-/// getting the script URI, origin, and top-level origin of the worker.
+/// This interface represents a shared worker in WebView2 and provides methods and
+/// properties for interacting with it, such as listening to destroying events,
+/// getting the script URI, origin, and top-level origin of the worker etc.
 [uuid(bcd39c8d-48bb-5f1b-be22-89f9c0c4484a), object, pointer_default(unique)]
 interface ICoreWebView2ExperimentalSharedWorker : IUnknown {
   /// A string representing the URI of the origin where the worker is executing.
@@ -1864,7 +1876,7 @@ interface ICoreWebView2Experimental30 : IUnknown {
   /// Adds an event handler for the `DedicatedWorkerCreated` event.
   /// Subscribe to this event that gets raised when a new dedicated worker is created.
   /// 
-  /// A Dedicated Worker is a type of web worker that allow you to run Javascript
+  /// A Dedicated Worker is a type of web worker that allows you to run Javascript
   /// code in the background without blocking the main thread, making them useful
   /// for tasks like heavy computations, data processing, and parallel execution.
   /// It is "dedicated" because it is linked to a single parent document and cannot

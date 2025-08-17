@@ -1140,8 +1140,6 @@ typedef enum COREWEBVIEW2_RELEASE_CHANNELS {
   COREWEBVIEW2_RELEASE_CHANNELS_DEV = 0x4,
   /// The Canary release channel that is released daily.
   COREWEBVIEW2_RELEASE_CHANNELS_CANARY = 0x8,
-  /// TODO(task.ms/58123561): Pump Sheriff: Remove internal channel from CoreWebView2ReleaseChannels in environment.idl
-  COREWEBVIEW2_RELEASE_CHANNELS_INTERNAL = 0x16,
 } COREWEBVIEW2_RELEASE_CHANNELS;
 cpp_quote("DEFINE_ENUM_FLAG_OPERATORS(COREWEBVIEW2_RELEASE_CHANNELS)")
 
