@@ -66,8 +66,8 @@ jobs:
     - name: Commit changes
       if: steps.check_version.outputs.new_version == 'true'
       run: |
-        git config --local user.email "xxdr@duck.com"
-        git config --local user.name "xanners (GH Actions)"
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
 
         git add .
         git commit -m "Update WebView2 to version ${{ steps.check_version.outputs.version }}" || exit 0
