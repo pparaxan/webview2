@@ -938,13 +938,6 @@ typedef interface ICoreWebView2DownloadStartingEventArgs ICoreWebView2DownloadSt
 #endif 	/* __ICoreWebView2DownloadStartingEventArgs_FWD_DEFINED__ */
 
 
-#ifndef __ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_FWD_DEFINED__
-#define __ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_FWD_DEFINED__
-typedef interface ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler;
-
-#endif 	/* __ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_FWD_DEFINED__ */
-
-
 #ifndef __ICoreWebView2Environment_FWD_DEFINED__
 #define __ICoreWebView2Environment_FWD_DEFINED__
 typedef interface ICoreWebView2Environment ICoreWebView2Environment;
@@ -964,6 +957,13 @@ typedef interface ICoreWebView2NewBrowserVersionAvailableEventHandler ICoreWebVi
 typedef interface ICoreWebView2CreateCoreWebView2ControllerCompletedHandler ICoreWebView2CreateCoreWebView2ControllerCompletedHandler;
 
 #endif 	/* __ICoreWebView2CreateCoreWebView2ControllerCompletedHandler_FWD_DEFINED__ */
+
+
+#ifndef __ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_FWD_DEFINED__
+#define __ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_FWD_DEFINED__
+typedef interface ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler;
+
+#endif 	/* __ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_FWD_DEFINED__ */
 
 
 #ifndef __ICoreWebView2Environment2_FWD_DEFINED__
@@ -41550,92 +41550,6 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2DownloadStartingEventA
 #endif 	/* __ICoreWebView2DownloadStartingEventArgs_INTERFACE_DEFINED__ */
 
 
-#ifndef __ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_INTERFACE_DEFINED__
-#define __ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_INTERFACE_DEFINED__
-
-/* interface ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler */
-/* [unique][object][uuid] */ 
-
-
-EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler = {0x4e8a3389,0xc9d8,0x4bd2,{0xb6,0xb5,0x12,0x4f,0xee,0x6c,0xc1,0x4d}};
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("4e8a3389-c9d8-4bd2-b6b5-124fee6cc14d")
-    ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE Invoke( 
-            /* [in] */ HRESULT errorCode,
-            /* [in] */ ICoreWebView2Environment *result) = 0;
-        
-    };
-    
-    
-#else 	/* C style interface */
-
-    typedef struct ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandlerVtbl
-    {
-        BEGIN_INTERFACE
-        
-        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler * This,
-            /* [in] */ REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppvObject);
-        
-        DECLSPEC_XFGVIRT(IUnknown, AddRef)
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler * This);
-        
-        DECLSPEC_XFGVIRT(IUnknown, Release)
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler * This);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler, Invoke)
-        HRESULT ( STDMETHODCALLTYPE *Invoke )( 
-            ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler * This,
-            /* [in] */ HRESULT errorCode,
-            /* [in] */ ICoreWebView2Environment *result);
-        
-        END_INTERFACE
-    } ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandlerVtbl;
-
-    interface ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler
-    {
-        CONST_VTBL struct ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandlerVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_QueryInterface(This,riid,ppvObject)	\
-    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
-
-#define ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_AddRef(This)	\
-    ( (This)->lpVtbl -> AddRef(This) ) 
-
-#define ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_Release(This)	\
-    ( (This)->lpVtbl -> Release(This) ) 
-
-
-#define ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_Invoke(This,errorCode,result)	\
-    ( (This)->lpVtbl -> Invoke(This,errorCode,result) ) 
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-
-#endif 	/* __ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_INTERFACE_DEFINED__ */
-
-
 #ifndef __ICoreWebView2Environment_INTERFACE_DEFINED__
 #define __ICoreWebView2Environment_INTERFACE_DEFINED__
 
@@ -41946,6 +41860,92 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2CreateCoreWebView2Cont
 
 
 #endif 	/* __ICoreWebView2CreateCoreWebView2ControllerCompletedHandler_INTERFACE_DEFINED__ */
+
+
+#ifndef __ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_INTERFACE_DEFINED__
+#define __ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler = {0x4e8a3389,0xc9d8,0x4bd2,{0xb6,0xb5,0x12,0x4f,0xee,0x6c,0xc1,0x4d}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("4e8a3389-c9d8-4bd2-b6b5-124fee6cc14d")
+    ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE Invoke( 
+            /* [in] */ HRESULT errorCode,
+            /* [in] */ ICoreWebView2Environment *result) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandlerVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler, Invoke)
+        HRESULT ( STDMETHODCALLTYPE *Invoke )( 
+            ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler * This,
+            /* [in] */ HRESULT errorCode,
+            /* [in] */ ICoreWebView2Environment *result);
+        
+        END_INTERFACE
+    } ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandlerVtbl;
+
+    interface ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler
+    {
+        CONST_VTBL struct ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandlerVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_Invoke(This,errorCode,result)	\
+    ( (This)->lpVtbl -> Invoke(This,errorCode,result) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler_INTERFACE_DEFINED__ */
 
 
 #ifndef __ICoreWebView2Environment2_INTERFACE_DEFINED__

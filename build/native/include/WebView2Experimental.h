@@ -77,6 +77,20 @@ typedef interface ICoreWebView2Experimental31 ICoreWebView2Experimental31;
 #endif 	/* __ICoreWebView2Experimental31_FWD_DEFINED__ */
 
 
+#ifndef __ICoreWebView2Experimental32_FWD_DEFINED__
+#define __ICoreWebView2Experimental32_FWD_DEFINED__
+typedef interface ICoreWebView2Experimental32 ICoreWebView2Experimental32;
+
+#endif 	/* __ICoreWebView2Experimental32_FWD_DEFINED__ */
+
+
+#ifndef __ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler_FWD_DEFINED__
+#define __ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler_FWD_DEFINED__
+typedef interface ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler;
+
+#endif 	/* __ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler_FWD_DEFINED__ */
+
+
 #ifndef __ICoreWebView2ExperimentalCompositionController4_FWD_DEFINED__
 #define __ICoreWebView2ExperimentalCompositionController4_FWD_DEFINED__
 typedef interface ICoreWebView2ExperimentalCompositionController4 ICoreWebView2ExperimentalCompositionController4;
@@ -203,6 +217,13 @@ typedef interface ICoreWebView2ExperimentalFrameDedicatedWorkerCreatedEventHandl
 #endif 	/* __ICoreWebView2ExperimentalFrameDedicatedWorkerCreatedEventHandler_FWD_DEFINED__ */
 
 
+#ifndef __ICoreWebView2ExperimentalMipSensitivityLabel_FWD_DEFINED__
+#define __ICoreWebView2ExperimentalMipSensitivityLabel_FWD_DEFINED__
+typedef interface ICoreWebView2ExperimentalMipSensitivityLabel ICoreWebView2ExperimentalMipSensitivityLabel;
+
+#endif 	/* __ICoreWebView2ExperimentalMipSensitivityLabel_FWD_DEFINED__ */
+
+
 #ifndef __ICoreWebView2ExperimentalProfile7_FWD_DEFINED__
 #define __ICoreWebView2ExperimentalProfile7_FWD_DEFINED__
 typedef interface ICoreWebView2ExperimentalProfile7 ICoreWebView2ExperimentalProfile7;
@@ -224,11 +245,39 @@ typedef interface ICoreWebView2ExperimentalProfile13 ICoreWebView2ExperimentalPr
 #endif 	/* __ICoreWebView2ExperimentalProfile13_FWD_DEFINED__ */
 
 
+#ifndef __ICoreWebView2ExperimentalProfile14_FWD_DEFINED__
+#define __ICoreWebView2ExperimentalProfile14_FWD_DEFINED__
+typedef interface ICoreWebView2ExperimentalProfile14 ICoreWebView2ExperimentalProfile14;
+
+#endif 	/* __ICoreWebView2ExperimentalProfile14_FWD_DEFINED__ */
+
+
 #ifndef __ICoreWebView2ExperimentalRestartRequestedEventArgs_FWD_DEFINED__
 #define __ICoreWebView2ExperimentalRestartRequestedEventArgs_FWD_DEFINED__
 typedef interface ICoreWebView2ExperimentalRestartRequestedEventArgs ICoreWebView2ExperimentalRestartRequestedEventArgs;
 
 #endif 	/* __ICoreWebView2ExperimentalRestartRequestedEventArgs_FWD_DEFINED__ */
+
+
+#ifndef __ICoreWebView2ExperimentalSensitivityInfo_FWD_DEFINED__
+#define __ICoreWebView2ExperimentalSensitivityInfo_FWD_DEFINED__
+typedef interface ICoreWebView2ExperimentalSensitivityInfo ICoreWebView2ExperimentalSensitivityInfo;
+
+#endif 	/* __ICoreWebView2ExperimentalSensitivityInfo_FWD_DEFINED__ */
+
+
+#ifndef __ICoreWebView2ExperimentalSensitivityLabelCollectionView_FWD_DEFINED__
+#define __ICoreWebView2ExperimentalSensitivityLabelCollectionView_FWD_DEFINED__
+typedef interface ICoreWebView2ExperimentalSensitivityLabelCollectionView ICoreWebView2ExperimentalSensitivityLabelCollectionView;
+
+#endif 	/* __ICoreWebView2ExperimentalSensitivityLabelCollectionView_FWD_DEFINED__ */
+
+
+#ifndef __ICoreWebView2ExperimentalSensitivityLabel_FWD_DEFINED__
+#define __ICoreWebView2ExperimentalSensitivityLabel_FWD_DEFINED__
+typedef interface ICoreWebView2ExperimentalSensitivityLabel ICoreWebView2ExperimentalSensitivityLabel;
+
+#endif 	/* __ICoreWebView2ExperimentalSensitivityLabel_FWD_DEFINED__ */
 
 
 #ifndef __ICoreWebView2ExperimentalServiceWorker_FWD_DEFINED__
@@ -535,12 +584,33 @@ extern "C"{
 
 
 
+
+
+
+
+
+
+
 typedef /* [v1_enum] */ 
 enum COREWEBVIEW2_RESTART_REQUESTED_PRIORITY
     {
         COREWEBVIEW2_RESTART_REQUESTED_PRIORITY_NORMAL	= 1000,
         COREWEBVIEW2_RESTART_REQUESTED_PRIORITY_HIGH	= 2000
     } 	COREWEBVIEW2_RESTART_REQUESTED_PRIORITY;
+
+typedef /* [v1_enum] */ 
+enum COREWEBVIEW2_SENSITIVITY_LABEL_KIND
+    {
+        COREWEBVIEW2_SENSITIVITY_LABEL_KIND_MIP	= 0
+    } 	COREWEBVIEW2_SENSITIVITY_LABEL_KIND;
+
+typedef /* [v1_enum] */ 
+enum COREWEBVIEW2_SENSITIVITY_LABELS_STATE
+    {
+        COREWEBVIEW2_SENSITIVITY_LABELS_STATE_NOT_APPLICABLE	= 0,
+        COREWEBVIEW2_SENSITIVITY_LABELS_STATE_PENDING	= ( COREWEBVIEW2_SENSITIVITY_LABELS_STATE_NOT_APPLICABLE + 1 ) ,
+        COREWEBVIEW2_SENSITIVITY_LABELS_STATE_AVAILABLE	= ( COREWEBVIEW2_SENSITIVITY_LABELS_STATE_PENDING + 1 ) 
+    } 	COREWEBVIEW2_SENSITIVITY_LABELS_STATE;
 
 typedef /* [v1_enum] */ 
 enum COREWEBVIEW2_TEXTURE_STREAM_ERROR_KIND
@@ -942,6 +1012,200 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2Experimental31 = {0xe6
 
 
 #endif 	/* __ICoreWebView2Experimental31_INTERFACE_DEFINED__ */
+
+
+#ifndef __ICoreWebView2Experimental32_INTERFACE_DEFINED__
+#define __ICoreWebView2Experimental32_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2Experimental32 */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2Experimental32 = {0x862c39a8,0xf64f,0x5a97,{0xba,0xe2,0xdb,0x56,0x51,0x02,0x0b,0x34}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("862c39a8-f64f-5a97-bae2-db5651020b34")
+    ICoreWebView2Experimental32 : public IUnknown
+    {
+    public:
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_SensitivityInfo( 
+            /* [retval][out] */ ICoreWebView2ExperimentalSensitivityInfo **value) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE add_SensitivityInfoChanged( 
+            /* [in] */ ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler *eventHandler,
+            /* [out] */ EventRegistrationToken *token) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE remove_SensitivityInfoChanged( 
+            /* [in] */ EventRegistrationToken token) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2Experimental32Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2Experimental32 * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2Experimental32 * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2Experimental32 * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2Experimental32, get_SensitivityInfo)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_SensitivityInfo )( 
+            ICoreWebView2Experimental32 * This,
+            /* [retval][out] */ ICoreWebView2ExperimentalSensitivityInfo **value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2Experimental32, add_SensitivityInfoChanged)
+        HRESULT ( STDMETHODCALLTYPE *add_SensitivityInfoChanged )( 
+            ICoreWebView2Experimental32 * This,
+            /* [in] */ ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler *eventHandler,
+            /* [out] */ EventRegistrationToken *token);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2Experimental32, remove_SensitivityInfoChanged)
+        HRESULT ( STDMETHODCALLTYPE *remove_SensitivityInfoChanged )( 
+            ICoreWebView2Experimental32 * This,
+            /* [in] */ EventRegistrationToken token);
+        
+        END_INTERFACE
+    } ICoreWebView2Experimental32Vtbl;
+
+    interface ICoreWebView2Experimental32
+    {
+        CONST_VTBL struct ICoreWebView2Experimental32Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2Experimental32_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2Experimental32_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2Experimental32_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2Experimental32_get_SensitivityInfo(This,value)	\
+    ( (This)->lpVtbl -> get_SensitivityInfo(This,value) ) 
+
+#define ICoreWebView2Experimental32_add_SensitivityInfoChanged(This,eventHandler,token)	\
+    ( (This)->lpVtbl -> add_SensitivityInfoChanged(This,eventHandler,token) ) 
+
+#define ICoreWebView2Experimental32_remove_SensitivityInfoChanged(This,token)	\
+    ( (This)->lpVtbl -> remove_SensitivityInfoChanged(This,token) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2Experimental32_INTERFACE_DEFINED__ */
+
+
+#ifndef __ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler_INTERFACE_DEFINED__
+#define __ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler = {0xada2e261,0x0e15,0x5b64,{0x84,0x22,0xf4,0x37,0x3e,0xb0,0xd5,0x52}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("ada2e261-0e15-5b64-8422-f4373eb0d552")
+    ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE Invoke( 
+            /* [in] */ ICoreWebView2 *sender,
+            /* [in] */ IUnknown *args) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2ExperimentalSensitivityInfoChangedEventHandlerVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler, Invoke)
+        HRESULT ( STDMETHODCALLTYPE *Invoke )( 
+            ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler * This,
+            /* [in] */ ICoreWebView2 *sender,
+            /* [in] */ IUnknown *args);
+        
+        END_INTERFACE
+    } ICoreWebView2ExperimentalSensitivityInfoChangedEventHandlerVtbl;
+
+    interface ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler
+    {
+        CONST_VTBL struct ICoreWebView2ExperimentalSensitivityInfoChangedEventHandlerVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler_Invoke(This,sender,args)	\
+    ( (This)->lpVtbl -> Invoke(This,sender,args) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler_INTERFACE_DEFINED__ */
 
 
 #ifndef __ICoreWebView2ExperimentalCompositionController4_INTERFACE_DEFINED__
@@ -2738,6 +3002,101 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalFrameDedic
 #endif 	/* __ICoreWebView2ExperimentalFrameDedicatedWorkerCreatedEventHandler_INTERFACE_DEFINED__ */
 
 
+#ifndef __ICoreWebView2ExperimentalMipSensitivityLabel_INTERFACE_DEFINED__
+#define __ICoreWebView2ExperimentalMipSensitivityLabel_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2ExperimentalMipSensitivityLabel */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalMipSensitivityLabel = {0x1a562888,0x3031,0x5375,{0xb8,0xc5,0x8a,0xfd,0x57,0x3e,0x79,0xc8}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("1a562888-3031-5375-b8c5-8afd573e79c8")
+    ICoreWebView2ExperimentalMipSensitivityLabel : public IUnknown
+    {
+    public:
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_LabelId( 
+            /* [retval][out] */ LPWSTR *value) = 0;
+        
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_OrganizationId( 
+            /* [retval][out] */ LPWSTR *value) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2ExperimentalMipSensitivityLabelVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2ExperimentalMipSensitivityLabel * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2ExperimentalMipSensitivityLabel * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2ExperimentalMipSensitivityLabel * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalMipSensitivityLabel, get_LabelId)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_LabelId )( 
+            ICoreWebView2ExperimentalMipSensitivityLabel * This,
+            /* [retval][out] */ LPWSTR *value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalMipSensitivityLabel, get_OrganizationId)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_OrganizationId )( 
+            ICoreWebView2ExperimentalMipSensitivityLabel * This,
+            /* [retval][out] */ LPWSTR *value);
+        
+        END_INTERFACE
+    } ICoreWebView2ExperimentalMipSensitivityLabelVtbl;
+
+    interface ICoreWebView2ExperimentalMipSensitivityLabel
+    {
+        CONST_VTBL struct ICoreWebView2ExperimentalMipSensitivityLabelVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2ExperimentalMipSensitivityLabel_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2ExperimentalMipSensitivityLabel_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2ExperimentalMipSensitivityLabel_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2ExperimentalMipSensitivityLabel_get_LabelId(This,value)	\
+    ( (This)->lpVtbl -> get_LabelId(This,value) ) 
+
+#define ICoreWebView2ExperimentalMipSensitivityLabel_get_OrganizationId(This,value)	\
+    ( (This)->lpVtbl -> get_OrganizationId(This,value) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2ExperimentalMipSensitivityLabel_INTERFACE_DEFINED__ */
+
+
 #ifndef __ICoreWebView2ExperimentalProfile7_INTERFACE_DEFINED__
 #define __ICoreWebView2ExperimentalProfile7_INTERFACE_DEFINED__
 
@@ -3003,6 +3362,92 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalProfile13 
 #endif 	/* __ICoreWebView2ExperimentalProfile13_INTERFACE_DEFINED__ */
 
 
+#ifndef __ICoreWebView2ExperimentalProfile14_INTERFACE_DEFINED__
+#define __ICoreWebView2ExperimentalProfile14_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2ExperimentalProfile14 */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalProfile14 = {0x591ffebf,0x33d9,0x5e0f,{0x84,0x7b,0xc1,0x4f,0x00,0x1d,0x26,0x07}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("591ffebf-33d9-5e0f-847b-c14f001d2607")
+    ICoreWebView2ExperimentalProfile14 : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE SetPageInteractionRestrictionManagerAllowList( 
+            /* [in] */ UINT32 allowlistCount,
+            /* [in] */ LPCWSTR *allowlist) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2ExperimentalProfile14Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2ExperimentalProfile14 * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2ExperimentalProfile14 * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2ExperimentalProfile14 * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalProfile14, SetPageInteractionRestrictionManagerAllowList)
+        HRESULT ( STDMETHODCALLTYPE *SetPageInteractionRestrictionManagerAllowList )( 
+            ICoreWebView2ExperimentalProfile14 * This,
+            /* [in] */ UINT32 allowlistCount,
+            /* [in] */ LPCWSTR *allowlist);
+        
+        END_INTERFACE
+    } ICoreWebView2ExperimentalProfile14Vtbl;
+
+    interface ICoreWebView2ExperimentalProfile14
+    {
+        CONST_VTBL struct ICoreWebView2ExperimentalProfile14Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2ExperimentalProfile14_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2ExperimentalProfile14_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2ExperimentalProfile14_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2ExperimentalProfile14_SetPageInteractionRestrictionManagerAllowList(This,allowlistCount,allowlist)	\
+    ( (This)->lpVtbl -> SetPageInteractionRestrictionManagerAllowList(This,allowlistCount,allowlist) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2ExperimentalProfile14_INTERFACE_DEFINED__ */
+
+
 #ifndef __ICoreWebView2ExperimentalRestartRequestedEventArgs_INTERFACE_DEFINED__
 #define __ICoreWebView2ExperimentalRestartRequestedEventArgs_INTERFACE_DEFINED__
 
@@ -3085,6 +3530,282 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalRestartReq
 
 
 #endif 	/* __ICoreWebView2ExperimentalRestartRequestedEventArgs_INTERFACE_DEFINED__ */
+
+
+#ifndef __ICoreWebView2ExperimentalSensitivityInfo_INTERFACE_DEFINED__
+#define __ICoreWebView2ExperimentalSensitivityInfo_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2ExperimentalSensitivityInfo */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalSensitivityInfo = {0x262ac1ce,0x8b69,0x5773,{0xb7,0xfa,0xd8,0x32,0xeb,0x50,0xdc,0x05}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("262ac1ce-8b69-5773-b7fa-d832eb50dc05")
+    ICoreWebView2ExperimentalSensitivityInfo : public IUnknown
+    {
+    public:
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_SensitivityLabels( 
+            /* [retval][out] */ ICoreWebView2ExperimentalSensitivityLabelCollectionView **value) = 0;
+        
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_SensitivityLabelsState( 
+            /* [retval][out] */ COREWEBVIEW2_SENSITIVITY_LABELS_STATE *value) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2ExperimentalSensitivityInfoVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2ExperimentalSensitivityInfo * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2ExperimentalSensitivityInfo * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2ExperimentalSensitivityInfo * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalSensitivityInfo, get_SensitivityLabels)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_SensitivityLabels )( 
+            ICoreWebView2ExperimentalSensitivityInfo * This,
+            /* [retval][out] */ ICoreWebView2ExperimentalSensitivityLabelCollectionView **value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalSensitivityInfo, get_SensitivityLabelsState)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_SensitivityLabelsState )( 
+            ICoreWebView2ExperimentalSensitivityInfo * This,
+            /* [retval][out] */ COREWEBVIEW2_SENSITIVITY_LABELS_STATE *value);
+        
+        END_INTERFACE
+    } ICoreWebView2ExperimentalSensitivityInfoVtbl;
+
+    interface ICoreWebView2ExperimentalSensitivityInfo
+    {
+        CONST_VTBL struct ICoreWebView2ExperimentalSensitivityInfoVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2ExperimentalSensitivityInfo_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2ExperimentalSensitivityInfo_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2ExperimentalSensitivityInfo_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2ExperimentalSensitivityInfo_get_SensitivityLabels(This,value)	\
+    ( (This)->lpVtbl -> get_SensitivityLabels(This,value) ) 
+
+#define ICoreWebView2ExperimentalSensitivityInfo_get_SensitivityLabelsState(This,value)	\
+    ( (This)->lpVtbl -> get_SensitivityLabelsState(This,value) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2ExperimentalSensitivityInfo_INTERFACE_DEFINED__ */
+
+
+#ifndef __ICoreWebView2ExperimentalSensitivityLabelCollectionView_INTERFACE_DEFINED__
+#define __ICoreWebView2ExperimentalSensitivityLabelCollectionView_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2ExperimentalSensitivityLabelCollectionView */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalSensitivityLabelCollectionView = {0xd308e652,0x8a72,0x5b4f,{0xbc,0xe4,0xa6,0x8d,0xfc,0x1e,0xf7,0x92}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("d308e652-8a72-5b4f-bce4-a68dfc1ef792")
+    ICoreWebView2ExperimentalSensitivityLabelCollectionView : public IUnknown
+    {
+    public:
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_Count( 
+            /* [retval][out] */ UINT32 *value) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetValueAtIndex( 
+            /* [in] */ UINT32 index,
+            /* [retval][out] */ ICoreWebView2ExperimentalSensitivityLabel **value) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2ExperimentalSensitivityLabelCollectionViewVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2ExperimentalSensitivityLabelCollectionView * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2ExperimentalSensitivityLabelCollectionView * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2ExperimentalSensitivityLabelCollectionView * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalSensitivityLabelCollectionView, get_Count)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_Count )( 
+            ICoreWebView2ExperimentalSensitivityLabelCollectionView * This,
+            /* [retval][out] */ UINT32 *value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalSensitivityLabelCollectionView, GetValueAtIndex)
+        HRESULT ( STDMETHODCALLTYPE *GetValueAtIndex )( 
+            ICoreWebView2ExperimentalSensitivityLabelCollectionView * This,
+            /* [in] */ UINT32 index,
+            /* [retval][out] */ ICoreWebView2ExperimentalSensitivityLabel **value);
+        
+        END_INTERFACE
+    } ICoreWebView2ExperimentalSensitivityLabelCollectionViewVtbl;
+
+    interface ICoreWebView2ExperimentalSensitivityLabelCollectionView
+    {
+        CONST_VTBL struct ICoreWebView2ExperimentalSensitivityLabelCollectionViewVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2ExperimentalSensitivityLabelCollectionView_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2ExperimentalSensitivityLabelCollectionView_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2ExperimentalSensitivityLabelCollectionView_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2ExperimentalSensitivityLabelCollectionView_get_Count(This,value)	\
+    ( (This)->lpVtbl -> get_Count(This,value) ) 
+
+#define ICoreWebView2ExperimentalSensitivityLabelCollectionView_GetValueAtIndex(This,index,value)	\
+    ( (This)->lpVtbl -> GetValueAtIndex(This,index,value) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2ExperimentalSensitivityLabelCollectionView_INTERFACE_DEFINED__ */
+
+
+#ifndef __ICoreWebView2ExperimentalSensitivityLabel_INTERFACE_DEFINED__
+#define __ICoreWebView2ExperimentalSensitivityLabel_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2ExperimentalSensitivityLabel */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalSensitivityLabel = {0x5c27e6f2,0xbaa6,0x5646,{0xb7,0x26,0xdb,0x80,0xa7,0x7b,0x73,0x45}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("5c27e6f2-baa6-5646-b726-db80a77b7345")
+    ICoreWebView2ExperimentalSensitivityLabel : public IUnknown
+    {
+    public:
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_LabelKind( 
+            /* [retval][out] */ COREWEBVIEW2_SENSITIVITY_LABEL_KIND *value) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2ExperimentalSensitivityLabelVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2ExperimentalSensitivityLabel * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2ExperimentalSensitivityLabel * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2ExperimentalSensitivityLabel * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalSensitivityLabel, get_LabelKind)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_LabelKind )( 
+            ICoreWebView2ExperimentalSensitivityLabel * This,
+            /* [retval][out] */ COREWEBVIEW2_SENSITIVITY_LABEL_KIND *value);
+        
+        END_INTERFACE
+    } ICoreWebView2ExperimentalSensitivityLabelVtbl;
+
+    interface ICoreWebView2ExperimentalSensitivityLabel
+    {
+        CONST_VTBL struct ICoreWebView2ExperimentalSensitivityLabelVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2ExperimentalSensitivityLabel_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2ExperimentalSensitivityLabel_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2ExperimentalSensitivityLabel_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2ExperimentalSensitivityLabel_get_LabelKind(This,value)	\
+    ( (This)->lpVtbl -> get_LabelKind(This,value) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2ExperimentalSensitivityLabel_INTERFACE_DEFINED__ */
 
 
 #ifndef __ICoreWebView2ExperimentalServiceWorker_INTERFACE_DEFINED__

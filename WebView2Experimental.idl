@@ -13,6 +13,8 @@ interface ICoreWebView2Experimental20;
 interface ICoreWebView2Experimental30;
 interface ICoreWebView2ExperimentalDedicatedWorkerCreatedEventHandler;
 interface ICoreWebView2Experimental31;
+interface ICoreWebView2Experimental32;
+interface ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler;
 interface ICoreWebView2ExperimentalCompositionController4;
 interface ICoreWebView2ExperimentalCompositionController6;
 interface ICoreWebView2ExperimentalDragStartingEventHandler;
@@ -31,10 +33,15 @@ interface ICoreWebView2ExperimentalRestartRequestedEventHandler;
 interface ICoreWebView2ExperimentalFrame7;
 interface ICoreWebView2ExperimentalFrame9;
 interface ICoreWebView2ExperimentalFrameDedicatedWorkerCreatedEventHandler;
+interface ICoreWebView2ExperimentalMipSensitivityLabel;
 interface ICoreWebView2ExperimentalProfile7;
 interface ICoreWebView2ExperimentalClearCustomDataPartitionCompletedHandler;
 interface ICoreWebView2ExperimentalProfile13;
+interface ICoreWebView2ExperimentalProfile14;
 interface ICoreWebView2ExperimentalRestartRequestedEventArgs;
+interface ICoreWebView2ExperimentalSensitivityInfo;
+interface ICoreWebView2ExperimentalSensitivityLabelCollectionView;
+interface ICoreWebView2ExperimentalSensitivityLabel;
 interface ICoreWebView2ExperimentalServiceWorker;
 interface ICoreWebView2ExperimentalServiceWorkerDestroyingEventHandler;
 interface ICoreWebView2ExperimentalServiceWorkerWebMessageReceivedEventHandler;
@@ -78,6 +85,36 @@ typedef enum COREWEBVIEW2_RESTART_REQUESTED_PRIORITY {
   /// Developer should prompt user to restart as soon as possible.
   COREWEBVIEW2_RESTART_REQUESTED_PRIORITY_HIGH = 2000,
 } COREWEBVIEW2_RESTART_REQUESTED_PRIORITY;
+
+/// Specifies the kind of sensitivity label applied to web content.
+/// Sensitivity labels are used to classify and protect content based on
+/// its sensitivity level.
+/// 
+/// This enumeration is designed to be extensible. New values may be added
+/// in future versions. Applications should not implement a default case
+/// that assumes knowledge of all possible label kinds to ensure forward
+/// compatibility.
+[v1_enum]
+typedef enum COREWEBVIEW2_SENSITIVITY_LABEL_KIND {
+  /// Represents a Microsoft Information Protection (MIP) sensitivity label.
+  COREWEBVIEW2_SENSITIVITY_LABEL_KIND_MIP,
+} COREWEBVIEW2_SENSITIVITY_LABEL_KIND;
+
+/// Represents the state of sensitivity label detection and processing
+/// for web content loaded in the WebView2 control.
+[v1_enum]
+typedef enum COREWEBVIEW2_SENSITIVITY_LABELS_STATE {
+  /// Indicates that none of the loaded pages are in the allow list. Hence
+  /// sensitivity labels are not applicable.
+  COREWEBVIEW2_SENSITIVITY_LABELS_STATE_NOT_APPLICABLE,
+  /// Indicates that WebView2 has loaded pages from the allow list that
+  /// can report sensitivity labels, but the label are not available
+  /// yet complete.
+  COREWEBVIEW2_SENSITIVITY_LABELS_STATE_PENDING,
+  /// Indicates that WebView2 has loaded pages from the allow list,
+  /// and the labels about the content are available now.
+  COREWEBVIEW2_SENSITIVITY_LABELS_STATE_AVAILABLE,
+} COREWEBVIEW2_SENSITIVITY_LABELS_STATE;
 
 /// Kinds of errors that can be reported by the `ErrorReceived` event.
 [v1_enum]
@@ -984,6 +1021,42 @@ interface ICoreWebView2ExperimentalFrame9 : IUnknown {
 
 
 
+/// Interface for Microsoft Information Protection (MIP) sensitivity labels.
+/// This interface provides specific information about MIP labels, including
+/// label identification and organizational context.
+/// 
+/// \snippet ScenarioSensitivityLabel.cpp MipSensitivityLabels
+[uuid(1a562888-3031-5375-b8c5-8afd573e79c8), object, pointer_default(unique)]
+interface ICoreWebView2ExperimentalMipSensitivityLabel : IUnknown {
+  /// The unique identifier for the Microsoft Information Protection label.
+  /// This string contains a GUID that uniquely identifies the specific
+  /// sensitivity label within the organization's MIP policy configuration.
+  /// The GUID follows the format:
+  /// `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (with dashes, no extra braces).
+  /// eg: `3fa85f64-5717-4562-b3fc-2c963f66afa6`
+  ///
+  /// The caller must free the returned string with `CoTaskMemFree`.  See
+  /// [API Conventions](/microsoft-edge/webview2/concepts/win32-api-conventions#strings).
+  [propget] HRESULT LabelId([out, retval] LPWSTR* value);
+
+
+  /// The unique identifier for the organization that owns the MIP label.
+  /// This string contains a GUID that identifies the Azure Active Directory
+  /// tenant or organization that configured and deployed the sensitivity label.
+  /// The GUID follows the format:
+  /// `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (with dashes, no extra braces).
+  /// eg: `44567f64-8712-1789-ac3f-15aa3f66ab12`
+  ///
+  /// The caller must free the returned string with `CoTaskMemFree`.  See
+  /// [API Conventions](/microsoft-edge/webview2/concepts/win32-api-conventions#strings).
+  [propget] HRESULT OrganizationId([out, retval] LPWSTR* value);
+
+
+
+}
+
+
+
 /// A continuation of the ICoreWebView2Profile interface to manage service and shared
 /// workers.
 [uuid(99758b67-f881-5e0e-8f02-ef3a27503091), object, pointer_default(unique)]
@@ -1007,11 +1080,100 @@ interface ICoreWebView2ExperimentalProfile13 : IUnknown {
 
 
 
+/// This is the ICoreWebView2Profile interface for PageInteractionRestrictionManager allowlist management.
+[uuid(591ffebf-33d9-5e0f-847b-c14f001d2607), object, pointer_default(unique)]
+interface ICoreWebView2ExperimentalProfile14 : IUnknown {
+  /// Sets the allowlist of URLs that are allowed to access the PageInteractionRestrictionManager API.
+  /// 
+  /// This method configures an allowlist of URLs that determines which web pages
+  /// can use the PageInteractionRestrictionManager API. Only URLs that match 
+  /// entries in this allowlist (either exact matches or wildcard patterns) will
+  /// have access to the PageInteractionRestrictionManager functionality.
+  /// 
+  /// URL Matching Logic:
+  /// The allowlist accepts both exact URL strings and wildcard patterns.
+  /// For wildcard patterns, `*` matches zero or more characters.
+  /// 
+  /// For detailed URL matching examples, refer to the table at [`AddWebResourceRequestedFilter`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2.addwebresourcerequestedfilter).
+  /// \snippet ScenarioSensitivityLabel.cpp SetAllowList
+  HRESULT SetPageInteractionRestrictionManagerAllowList(
+      [in] UINT32 allowlistCount,
+      [in] LPCWSTR* allowlist
+  );
+
+
+}
+
+
+
 /// Event args for the `RestartRequested` event.
 [uuid(40bb5778-6d85-5008-bbf4-22cc808b2737), object, pointer_default(unique)]
 interface ICoreWebView2ExperimentalRestartRequestedEventArgs : IUnknown {
   /// Restart requested priority.
   [propget] HRESULT Priority([out, retval] COREWEBVIEW2_RESTART_REQUESTED_PRIORITY* value);
+
+
+
+}
+
+
+/// A collection of ICoreWebView2ExperimentalSensitivityLabel.
+[uuid(d308e652-8a72-5b4f-bce4-a68dfc1ef792), object, pointer_default(unique)]
+interface ICoreWebView2ExperimentalSensitivityLabelCollectionView : IUnknown {
+  /// The number of elements contained in the collection.
+  [propget] HRESULT Count([out, retval] UINT32* value);
+
+  /// Gets the element at the given index.
+  HRESULT GetValueAtIndex([in] UINT32 index, [out, retval] ICoreWebView2ExperimentalSensitivityLabel** value);
+}
+
+
+/// This interface provides information about sensitivity of a web page
+/// loaded in the WebView2 control. It contains the current state of
+/// sensitivity label detection and a collection of all sensitivity labels
+/// that have been reported by the web page via
+/// [`Page Interaction Restriction Manager`](https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/PageInteractionRestrictionManager/explainer.md).
+[uuid(262ac1ce-8b69-5773-b7fa-d832eb50dc05), object, pointer_default(unique)]
+interface ICoreWebView2ExperimentalSensitivityInfo : IUnknown {
+  /// Gets a read-only collection of all sensitivity labels detected in the
+  /// current web document. This collection contains list of sensitivity
+  /// labels that have been reported by the web content.
+  /// `SensitivityLabels` are valid only if SensitivityLabelsState is
+  /// `COREWEBVIEW2_SENSITIVITY_LABELS_STATE_AVAILABLE`.
+  /// In case SensitivityLabelsState is `COREWEBVIEW2_SENSITIVITY_LABELS_STATE_NOT_APPLICABLE`
+  /// this collection will be empty.
+  /// In case SensitivityLabelsState is `COREWEBVIEW2_SENSITIVITY_LABELS_STATE_PENDING`
+  /// this will return nullptr.
+  /// 
+  /// \snippet ScenarioSensitivityLabel.cpp SensitivityLabels
+  [propget] HRESULT SensitivityLabels([out, retval] ICoreWebView2ExperimentalSensitivityLabelCollectionView** value);
+
+
+  /// Gets the current state of sensitivity label detection.
+  /// Refer `COREWEBVIEW2_SENSITIVITY_LABELS_STATE` for different states.
+  [propget] HRESULT SensitivityLabelsState([out, retval] COREWEBVIEW2_SENSITIVITY_LABELS_STATE* value);
+
+
+
+}
+
+
+
+/// Interface for different sensitivity label kinds used in WebView2.
+/// This interface provides functionality for accessing sensitivity
+/// label information applied to web content. Different label types
+/// (such as `ICoreWebView2MipSensitivityLabel`) provide
+/// specific label information and metadata.
+[uuid(5c27e6f2-baa6-5646-b726-db80a77b7345), object, pointer_default(unique)]
+interface ICoreWebView2ExperimentalSensitivityLabel : IUnknown {
+  /// Gets the type of the sensitivity label applied to the web content.
+  /// This property identifies which sensitivity label system is being used
+  /// (such as Microsoft Information Protection or other label providers).
+  /// Applications can use this information to determine how to interpret
+  /// and handle the label data, as different label types may have different
+  /// metadata formats, protection requirements, and policy enforcement
+  /// mechanisms.
+  [propget] HRESULT LabelKind([out, retval] COREWEBVIEW2_SENSITIVITY_LABEL_KIND* value);
 
 
 
@@ -1909,6 +2071,61 @@ interface ICoreWebView2Experimental31 : IUnknown {
   /// \snippet ScenarioWindowControlsOverlay.cpp WindowControlsOverlay
   [propget] HRESULT WindowControlsOverlay([out, retval] ICoreWebView2ExperimentalWindowControlsOverlay** value);
 
+
+
+}
+
+
+/// Receives `SensitivityInfoChanged` events.
+[uuid(ada2e261-0e15-5b64-8422-f4373eb0d552), object, pointer_default(unique)]
+interface ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler : IUnknown {
+  /// Provides the event args for the corresponding event.
+  HRESULT Invoke(
+      [in] ICoreWebView2* sender,
+      [in] IUnknown* args);
+}
+
+
+/// Extension of the `ICoreWebView2` interface that provides sensitivity
+/// classification of a web page. This interface enables applications to
+/// monitor and respond to changes in the sensitivity classification of web
+/// content loaded in the WebView2 control. When sensitivity labels are
+/// detected, updated, or removed from web pages, the `SensitivityInfoChanged`
+/// event is raised.
+[uuid(862c39a8-f64f-5a97-bae2-db5651020b34), object, pointer_default(unique)]
+interface ICoreWebView2Experimental32 : IUnknown {
+  /// Gets the current state of sensitivity label detection for the content
+  /// loaded in the WebView2 control.
+  /// See `ICoreWebView2SensitivityInfo` for more details.
+  /// 
+  /// \snippet ScenarioSensitivityLabel.cpp SensitivityInfo
+  [propget] HRESULT SensitivityInfo([out, retval] ICoreWebView2ExperimentalSensitivityInfo** value);
+
+
+
+  /// Adds an event handler for the `SensitivityInfoChanged` event.
+  /// Event raised when the sensitivity label classification of web page changes.
+  /// Web page may report sensitivity labels via
+  /// [`Page Interaction Restriction Manager`](https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/PageInteractionRestrictionManager/explainer.md).
+  /// This event is triggered when the WebView2 control detects a change in the
+  /// sensitivity labels associated with the currently loaded web page.
+  /// Changes can occur when navigating to a new page in the main frame,
+  /// when the existing page updates its sensitivity label information.
+  /// On navigation to a new page `SensitivityInfoChanged` event is raised
+  /// just after the `NavigationStarting` event. Applications can subscribe
+  /// to this event to receive notifications about sensitivity changes.
+  /// The event handler can then query the `SensitivityInfo` property
+  /// to get the latest sensitivity label information and take appropriate
+  /// actions based on the updated sensitivity classification.
+  /// 
+  /// \snippet ScenarioSensitivityLabel.cpp SensitivityInfoChanged
+  HRESULT add_SensitivityInfoChanged(
+      [in] ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler* eventHandler,
+      [out] EventRegistrationToken* token);
+
+  /// Removes an event handler previously added with `add_SensitivityInfoChanged`.
+  HRESULT remove_SensitivityInfoChanged(
+      [in] EventRegistrationToken token);
 
 
 }

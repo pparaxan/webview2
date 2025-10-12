@@ -6206,6 +6206,7 @@
             <summary></summary>
             <summary></summary>
             <summary></summary>
+            <summary></summary>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2Profile.ClearCustomDataPartitionAsync(System.String)">
             <summary>
