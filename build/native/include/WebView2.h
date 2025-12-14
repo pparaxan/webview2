@@ -693,6 +693,20 @@ typedef interface ICoreWebView2RegionRectCollectionView ICoreWebView2RegionRectC
 #endif 	/* __ICoreWebView2RegionRectCollectionView_FWD_DEFINED__ */
 
 
+#ifndef __ICoreWebView2CompositionController5_FWD_DEFINED__
+#define __ICoreWebView2CompositionController5_FWD_DEFINED__
+typedef interface ICoreWebView2CompositionController5 ICoreWebView2CompositionController5;
+
+#endif 	/* __ICoreWebView2CompositionController5_FWD_DEFINED__ */
+
+
+#ifndef __ICoreWebView2DragStartingEventHandler_FWD_DEFINED__
+#define __ICoreWebView2DragStartingEventHandler_FWD_DEFINED__
+typedef interface ICoreWebView2DragStartingEventHandler ICoreWebView2DragStartingEventHandler;
+
+#endif 	/* __ICoreWebView2DragStartingEventHandler_FWD_DEFINED__ */
+
+
 #ifndef __ICoreWebView2ContentLoadingEventArgs_FWD_DEFINED__
 #define __ICoreWebView2ContentLoadingEventArgs_FWD_DEFINED__
 typedef interface ICoreWebView2ContentLoadingEventArgs ICoreWebView2ContentLoadingEventArgs;
@@ -712,6 +726,13 @@ typedef interface ICoreWebView2ContextMenuItem ICoreWebView2ContextMenuItem;
 typedef interface ICoreWebView2CustomItemSelectedEventHandler ICoreWebView2CustomItemSelectedEventHandler;
 
 #endif 	/* __ICoreWebView2CustomItemSelectedEventHandler_FWD_DEFINED__ */
+
+
+#ifndef __ICoreWebView2ContextMenuItemCollection_FWD_DEFINED__
+#define __ICoreWebView2ContextMenuItemCollection_FWD_DEFINED__
+typedef interface ICoreWebView2ContextMenuItemCollection ICoreWebView2ContextMenuItemCollection;
+
+#endif 	/* __ICoreWebView2ContextMenuItemCollection_FWD_DEFINED__ */
 
 
 #ifndef __ICoreWebView2ContextMenuRequestedEventArgs_FWD_DEFINED__
@@ -929,6 +950,13 @@ typedef interface ICoreWebView2StateChangedEventHandler ICoreWebView2StateChange
 typedef interface ICoreWebView2DownloadStartingEventArgs ICoreWebView2DownloadStartingEventArgs;
 
 #endif 	/* __ICoreWebView2DownloadStartingEventArgs_FWD_DEFINED__ */
+
+
+#ifndef __ICoreWebView2DragStartingEventArgs_FWD_DEFINED__
+#define __ICoreWebView2DragStartingEventArgs_FWD_DEFINED__
+typedef interface ICoreWebView2DragStartingEventArgs ICoreWebView2DragStartingEventArgs;
+
+#endif 	/* __ICoreWebView2DragStartingEventArgs_FWD_DEFINED__ */
 
 
 #ifndef __ICoreWebView2Environment_FWD_DEFINED__
@@ -1351,6 +1379,13 @@ typedef interface ICoreWebView2FrameInfo2 ICoreWebView2FrameInfo2;
 #endif 	/* __ICoreWebView2FrameInfo2_FWD_DEFINED__ */
 
 
+#ifndef __ICoreWebView2FrameInfoCollection_FWD_DEFINED__
+#define __ICoreWebView2FrameInfoCollection_FWD_DEFINED__
+typedef interface ICoreWebView2FrameInfoCollection ICoreWebView2FrameInfoCollection;
+
+#endif 	/* __ICoreWebView2FrameInfoCollection_FWD_DEFINED__ */
+
+
 #ifndef __ICoreWebView2FrameInfoCollectionIterator_FWD_DEFINED__
 #define __ICoreWebView2FrameInfoCollectionIterator_FWD_DEFINED__
 typedef interface ICoreWebView2FrameInfoCollectionIterator ICoreWebView2FrameInfoCollectionIterator;
@@ -1482,20 +1517,6 @@ typedef interface ICoreWebView2NotificationReceivedEventArgs ICoreWebView2Notifi
 typedef interface ICoreWebView2ObjectCollectionView ICoreWebView2ObjectCollectionView;
 
 #endif 	/* __ICoreWebView2ObjectCollectionView_FWD_DEFINED__ */
-
-
-#ifndef __ICoreWebView2ContextMenuItemCollection_FWD_DEFINED__
-#define __ICoreWebView2ContextMenuItemCollection_FWD_DEFINED__
-typedef interface ICoreWebView2ContextMenuItemCollection ICoreWebView2ContextMenuItemCollection;
-
-#endif 	/* __ICoreWebView2ContextMenuItemCollection_FWD_DEFINED__ */
-
-
-#ifndef __ICoreWebView2FrameInfoCollection_FWD_DEFINED__
-#define __ICoreWebView2FrameInfoCollection_FWD_DEFINED__
-typedef interface ICoreWebView2FrameInfoCollection ICoreWebView2FrameInfoCollection;
-
-#endif 	/* __ICoreWebView2FrameInfoCollection_FWD_DEFINED__ */
 
 
 #ifndef __ICoreWebView2ObjectCollection_FWD_DEFINED__
@@ -1906,6 +1927,9 @@ extern "C"{
 
 /* library WebView2 */
 /* [version][uuid] */ 
+
+
+
 
 
 
@@ -36349,6 +36373,344 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2RegionRectCollectionVi
 #endif 	/* __ICoreWebView2RegionRectCollectionView_INTERFACE_DEFINED__ */
 
 
+#ifndef __ICoreWebView2CompositionController5_INTERFACE_DEFINED__
+#define __ICoreWebView2CompositionController5_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2CompositionController5 */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2CompositionController5 = {0x8d0f82eb,0x7c33,0x5a4c,{0x91,0x08,0x84,0xca,0x28,0xcc,0xc3,0xb4}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("8d0f82eb-7c33-5a4c-9108-84ca28ccc3b4")
+    ICoreWebView2CompositionController5 : public ICoreWebView2CompositionController4
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE add_DragStarting( 
+            /* [in] */ ICoreWebView2DragStartingEventHandler *eventHandler,
+            /* [out] */ EventRegistrationToken *token) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE remove_DragStarting( 
+            /* [in] */ EventRegistrationToken token) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2CompositionController5Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2CompositionController5 * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2CompositionController5 * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController, get_RootVisualTarget)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_RootVisualTarget )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [retval][out] */ IUnknown **target);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController, put_RootVisualTarget)
+        /* [propput] */ HRESULT ( STDMETHODCALLTYPE *put_RootVisualTarget )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ IUnknown *target);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController, SendMouseInput)
+        HRESULT ( STDMETHODCALLTYPE *SendMouseInput )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ COREWEBVIEW2_MOUSE_EVENT_KIND eventKind,
+            /* [in] */ COREWEBVIEW2_MOUSE_EVENT_VIRTUAL_KEYS virtualKeys,
+            /* [in] */ UINT32 mouseData,
+            /* [in] */ POINT point);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController, SendPointerInput)
+        HRESULT ( STDMETHODCALLTYPE *SendPointerInput )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ COREWEBVIEW2_POINTER_EVENT_KIND eventKind,
+            /* [in] */ ICoreWebView2PointerInfo *pointerInfo);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController, get_Cursor)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_Cursor )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [retval][out] */ HCURSOR *cursor);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController, get_SystemCursorId)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_SystemCursorId )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [retval][out] */ UINT32 *systemCursorId);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController, add_CursorChanged)
+        HRESULT ( STDMETHODCALLTYPE *add_CursorChanged )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ ICoreWebView2CursorChangedEventHandler *eventHandler,
+            /* [out] */ EventRegistrationToken *token);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController, remove_CursorChanged)
+        HRESULT ( STDMETHODCALLTYPE *remove_CursorChanged )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ EventRegistrationToken token);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController2, get_AutomationProvider)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_AutomationProvider )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [retval][out] */ IUnknown **value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController3, DragEnter)
+        HRESULT ( STDMETHODCALLTYPE *DragEnter )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ IDataObject *dataObject,
+            /* [in] */ DWORD keyState,
+            /* [in] */ POINT point,
+            /* [retval][out] */ DWORD *effect);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController3, DragLeave)
+        HRESULT ( STDMETHODCALLTYPE *DragLeave )( 
+            ICoreWebView2CompositionController5 * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController3, DragOver)
+        HRESULT ( STDMETHODCALLTYPE *DragOver )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ DWORD keyState,
+            /* [in] */ POINT point,
+            /* [retval][out] */ DWORD *effect);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController3, Drop)
+        HRESULT ( STDMETHODCALLTYPE *Drop )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ IDataObject *dataObject,
+            /* [in] */ DWORD keyState,
+            /* [in] */ POINT point,
+            /* [retval][out] */ DWORD *effect);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController4, GetNonClientRegionAtPoint)
+        HRESULT ( STDMETHODCALLTYPE *GetNonClientRegionAtPoint )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ POINT point,
+            /* [retval][out] */ COREWEBVIEW2_NON_CLIENT_REGION_KIND *value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController4, QueryNonClientRegion)
+        HRESULT ( STDMETHODCALLTYPE *QueryNonClientRegion )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ COREWEBVIEW2_NON_CLIENT_REGION_KIND kind,
+            /* [retval][out] */ ICoreWebView2RegionRectCollectionView **rects);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController4, add_NonClientRegionChanged)
+        HRESULT ( STDMETHODCALLTYPE *add_NonClientRegionChanged )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ ICoreWebView2NonClientRegionChangedEventHandler *eventHandler,
+            /* [out] */ EventRegistrationToken *token);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController4, remove_NonClientRegionChanged)
+        HRESULT ( STDMETHODCALLTYPE *remove_NonClientRegionChanged )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ EventRegistrationToken token);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController5, add_DragStarting)
+        HRESULT ( STDMETHODCALLTYPE *add_DragStarting )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ ICoreWebView2DragStartingEventHandler *eventHandler,
+            /* [out] */ EventRegistrationToken *token);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionController5, remove_DragStarting)
+        HRESULT ( STDMETHODCALLTYPE *remove_DragStarting )( 
+            ICoreWebView2CompositionController5 * This,
+            /* [in] */ EventRegistrationToken token);
+        
+        END_INTERFACE
+    } ICoreWebView2CompositionController5Vtbl;
+
+    interface ICoreWebView2CompositionController5
+    {
+        CONST_VTBL struct ICoreWebView2CompositionController5Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2CompositionController5_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2CompositionController5_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2CompositionController5_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2CompositionController5_get_RootVisualTarget(This,target)	\
+    ( (This)->lpVtbl -> get_RootVisualTarget(This,target) ) 
+
+#define ICoreWebView2CompositionController5_put_RootVisualTarget(This,target)	\
+    ( (This)->lpVtbl -> put_RootVisualTarget(This,target) ) 
+
+#define ICoreWebView2CompositionController5_SendMouseInput(This,eventKind,virtualKeys,mouseData,point)	\
+    ( (This)->lpVtbl -> SendMouseInput(This,eventKind,virtualKeys,mouseData,point) ) 
+
+#define ICoreWebView2CompositionController5_SendPointerInput(This,eventKind,pointerInfo)	\
+    ( (This)->lpVtbl -> SendPointerInput(This,eventKind,pointerInfo) ) 
+
+#define ICoreWebView2CompositionController5_get_Cursor(This,cursor)	\
+    ( (This)->lpVtbl -> get_Cursor(This,cursor) ) 
+
+#define ICoreWebView2CompositionController5_get_SystemCursorId(This,systemCursorId)	\
+    ( (This)->lpVtbl -> get_SystemCursorId(This,systemCursorId) ) 
+
+#define ICoreWebView2CompositionController5_add_CursorChanged(This,eventHandler,token)	\
+    ( (This)->lpVtbl -> add_CursorChanged(This,eventHandler,token) ) 
+
+#define ICoreWebView2CompositionController5_remove_CursorChanged(This,token)	\
+    ( (This)->lpVtbl -> remove_CursorChanged(This,token) ) 
+
+
+#define ICoreWebView2CompositionController5_get_AutomationProvider(This,value)	\
+    ( (This)->lpVtbl -> get_AutomationProvider(This,value) ) 
+
+
+#define ICoreWebView2CompositionController5_DragEnter(This,dataObject,keyState,point,effect)	\
+    ( (This)->lpVtbl -> DragEnter(This,dataObject,keyState,point,effect) ) 
+
+#define ICoreWebView2CompositionController5_DragLeave(This)	\
+    ( (This)->lpVtbl -> DragLeave(This) ) 
+
+#define ICoreWebView2CompositionController5_DragOver(This,keyState,point,effect)	\
+    ( (This)->lpVtbl -> DragOver(This,keyState,point,effect) ) 
+
+#define ICoreWebView2CompositionController5_Drop(This,dataObject,keyState,point,effect)	\
+    ( (This)->lpVtbl -> Drop(This,dataObject,keyState,point,effect) ) 
+
+
+#define ICoreWebView2CompositionController5_GetNonClientRegionAtPoint(This,point,value)	\
+    ( (This)->lpVtbl -> GetNonClientRegionAtPoint(This,point,value) ) 
+
+#define ICoreWebView2CompositionController5_QueryNonClientRegion(This,kind,rects)	\
+    ( (This)->lpVtbl -> QueryNonClientRegion(This,kind,rects) ) 
+
+#define ICoreWebView2CompositionController5_add_NonClientRegionChanged(This,eventHandler,token)	\
+    ( (This)->lpVtbl -> add_NonClientRegionChanged(This,eventHandler,token) ) 
+
+#define ICoreWebView2CompositionController5_remove_NonClientRegionChanged(This,token)	\
+    ( (This)->lpVtbl -> remove_NonClientRegionChanged(This,token) ) 
+
+
+#define ICoreWebView2CompositionController5_add_DragStarting(This,eventHandler,token)	\
+    ( (This)->lpVtbl -> add_DragStarting(This,eventHandler,token) ) 
+
+#define ICoreWebView2CompositionController5_remove_DragStarting(This,token)	\
+    ( (This)->lpVtbl -> remove_DragStarting(This,token) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2CompositionController5_INTERFACE_DEFINED__ */
+
+
+#ifndef __ICoreWebView2DragStartingEventHandler_INTERFACE_DEFINED__
+#define __ICoreWebView2DragStartingEventHandler_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2DragStartingEventHandler */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2DragStartingEventHandler = {0x3b149321,0x83c3,0x5d1f,{0xb0,0x3f,0xa4,0x28,0x99,0xbc,0x1c,0x15}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("3b149321-83c3-5d1f-b03f-a42899bc1c15")
+    ICoreWebView2DragStartingEventHandler : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE Invoke( 
+            /* [in] */ ICoreWebView2CompositionController *sender,
+            /* [in] */ ICoreWebView2DragStartingEventArgs *args) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2DragStartingEventHandlerVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2DragStartingEventHandler * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2DragStartingEventHandler * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2DragStartingEventHandler * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2DragStartingEventHandler, Invoke)
+        HRESULT ( STDMETHODCALLTYPE *Invoke )( 
+            ICoreWebView2DragStartingEventHandler * This,
+            /* [in] */ ICoreWebView2CompositionController *sender,
+            /* [in] */ ICoreWebView2DragStartingEventArgs *args);
+        
+        END_INTERFACE
+    } ICoreWebView2DragStartingEventHandlerVtbl;
+
+    interface ICoreWebView2DragStartingEventHandler
+    {
+        CONST_VTBL struct ICoreWebView2DragStartingEventHandlerVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2DragStartingEventHandler_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2DragStartingEventHandler_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2DragStartingEventHandler_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2DragStartingEventHandler_Invoke(This,sender,args)	\
+    ( (This)->lpVtbl -> Invoke(This,sender,args) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2DragStartingEventHandler_INTERFACE_DEFINED__ */
+
+
 #ifndef __ICoreWebView2ContentLoadingEventArgs_INTERFACE_DEFINED__
 #define __ICoreWebView2ContentLoadingEventArgs_INTERFACE_DEFINED__
 
@@ -36746,6 +37108,127 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2CustomItemSelectedEven
 
 
 #endif 	/* __ICoreWebView2CustomItemSelectedEventHandler_INTERFACE_DEFINED__ */
+
+
+#ifndef __ICoreWebView2ContextMenuItemCollection_INTERFACE_DEFINED__
+#define __ICoreWebView2ContextMenuItemCollection_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2ContextMenuItemCollection */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ContextMenuItemCollection = {0xf562a2f5,0xc415,0x45cf,{0xb9,0x09,0xd4,0xb7,0xc1,0xe2,0x76,0xd3}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("f562a2f5-c415-45cf-b909-d4b7c1e276d3")
+    ICoreWebView2ContextMenuItemCollection : public IUnknown
+    {
+    public:
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_Count( 
+            /* [retval][out] */ UINT32 *value) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetValueAtIndex( 
+            /* [in] */ UINT32 index,
+            /* [retval][out] */ ICoreWebView2ContextMenuItem **value) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE RemoveValueAtIndex( 
+            /* [in] */ UINT32 index) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE InsertValueAtIndex( 
+            /* [in] */ UINT32 index,
+            /* [in] */ ICoreWebView2ContextMenuItem *value) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2ContextMenuItemCollectionVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2ContextMenuItemCollection * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2ContextMenuItemCollection * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2ContextMenuItemCollection * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ContextMenuItemCollection, get_Count)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_Count )( 
+            ICoreWebView2ContextMenuItemCollection * This,
+            /* [retval][out] */ UINT32 *value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ContextMenuItemCollection, GetValueAtIndex)
+        HRESULT ( STDMETHODCALLTYPE *GetValueAtIndex )( 
+            ICoreWebView2ContextMenuItemCollection * This,
+            /* [in] */ UINT32 index,
+            /* [retval][out] */ ICoreWebView2ContextMenuItem **value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ContextMenuItemCollection, RemoveValueAtIndex)
+        HRESULT ( STDMETHODCALLTYPE *RemoveValueAtIndex )( 
+            ICoreWebView2ContextMenuItemCollection * This,
+            /* [in] */ UINT32 index);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ContextMenuItemCollection, InsertValueAtIndex)
+        HRESULT ( STDMETHODCALLTYPE *InsertValueAtIndex )( 
+            ICoreWebView2ContextMenuItemCollection * This,
+            /* [in] */ UINT32 index,
+            /* [in] */ ICoreWebView2ContextMenuItem *value);
+        
+        END_INTERFACE
+    } ICoreWebView2ContextMenuItemCollectionVtbl;
+
+    interface ICoreWebView2ContextMenuItemCollection
+    {
+        CONST_VTBL struct ICoreWebView2ContextMenuItemCollectionVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2ContextMenuItemCollection_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2ContextMenuItemCollection_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2ContextMenuItemCollection_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2ContextMenuItemCollection_get_Count(This,value)	\
+    ( (This)->lpVtbl -> get_Count(This,value) ) 
+
+#define ICoreWebView2ContextMenuItemCollection_GetValueAtIndex(This,index,value)	\
+    ( (This)->lpVtbl -> GetValueAtIndex(This,index,value) ) 
+
+#define ICoreWebView2ContextMenuItemCollection_RemoveValueAtIndex(This,index)	\
+    ( (This)->lpVtbl -> RemoveValueAtIndex(This,index) ) 
+
+#define ICoreWebView2ContextMenuItemCollection_InsertValueAtIndex(This,index,value)	\
+    ( (This)->lpVtbl -> InsertValueAtIndex(This,index,value) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2ContextMenuItemCollection_INTERFACE_DEFINED__ */
 
 
 #ifndef __ICoreWebView2ContextMenuRequestedEventArgs_INTERFACE_DEFINED__
@@ -41427,6 +41910,145 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2DownloadStartingEventA
 
 
 #endif 	/* __ICoreWebView2DownloadStartingEventArgs_INTERFACE_DEFINED__ */
+
+
+#ifndef __ICoreWebView2DragStartingEventArgs_INTERFACE_DEFINED__
+#define __ICoreWebView2DragStartingEventArgs_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2DragStartingEventArgs */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2DragStartingEventArgs = {0x8b8d9c7e,0x2f1a,0x4e6b,{0x9d,0x5a,0x3c,0x8f,0x7b,0x9e,0x1a,0x2d}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("8b8d9c7e-2f1a-4e6b-9d5a-3c8f7b9e1a2d")
+    ICoreWebView2DragStartingEventArgs : public IUnknown
+    {
+    public:
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_AllowedDropEffects( 
+            /* [retval][out] */ DWORD *value) = 0;
+        
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_Data( 
+            /* [retval][out] */ IDataObject **value) = 0;
+        
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_Handled( 
+            /* [retval][out] */ BOOL *value) = 0;
+        
+        virtual /* [propput] */ HRESULT STDMETHODCALLTYPE put_Handled( 
+            /* [in] */ BOOL value) = 0;
+        
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_Position( 
+            /* [retval][out] */ POINT *value) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetDeferral( 
+            /* [retval][out] */ ICoreWebView2Deferral **value) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2DragStartingEventArgsVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2DragStartingEventArgs * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2DragStartingEventArgs * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2DragStartingEventArgs * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2DragStartingEventArgs, get_AllowedDropEffects)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_AllowedDropEffects )( 
+            ICoreWebView2DragStartingEventArgs * This,
+            /* [retval][out] */ DWORD *value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2DragStartingEventArgs, get_Data)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_Data )( 
+            ICoreWebView2DragStartingEventArgs * This,
+            /* [retval][out] */ IDataObject **value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2DragStartingEventArgs, get_Handled)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_Handled )( 
+            ICoreWebView2DragStartingEventArgs * This,
+            /* [retval][out] */ BOOL *value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2DragStartingEventArgs, put_Handled)
+        /* [propput] */ HRESULT ( STDMETHODCALLTYPE *put_Handled )( 
+            ICoreWebView2DragStartingEventArgs * This,
+            /* [in] */ BOOL value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2DragStartingEventArgs, get_Position)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_Position )( 
+            ICoreWebView2DragStartingEventArgs * This,
+            /* [retval][out] */ POINT *value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2DragStartingEventArgs, GetDeferral)
+        HRESULT ( STDMETHODCALLTYPE *GetDeferral )( 
+            ICoreWebView2DragStartingEventArgs * This,
+            /* [retval][out] */ ICoreWebView2Deferral **value);
+        
+        END_INTERFACE
+    } ICoreWebView2DragStartingEventArgsVtbl;
+
+    interface ICoreWebView2DragStartingEventArgs
+    {
+        CONST_VTBL struct ICoreWebView2DragStartingEventArgsVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2DragStartingEventArgs_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2DragStartingEventArgs_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2DragStartingEventArgs_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2DragStartingEventArgs_get_AllowedDropEffects(This,value)	\
+    ( (This)->lpVtbl -> get_AllowedDropEffects(This,value) ) 
+
+#define ICoreWebView2DragStartingEventArgs_get_Data(This,value)	\
+    ( (This)->lpVtbl -> get_Data(This,value) ) 
+
+#define ICoreWebView2DragStartingEventArgs_get_Handled(This,value)	\
+    ( (This)->lpVtbl -> get_Handled(This,value) ) 
+
+#define ICoreWebView2DragStartingEventArgs_put_Handled(This,value)	\
+    ( (This)->lpVtbl -> put_Handled(This,value) ) 
+
+#define ICoreWebView2DragStartingEventArgs_get_Position(This,value)	\
+    ( (This)->lpVtbl -> get_Position(This,value) ) 
+
+#define ICoreWebView2DragStartingEventArgs_GetDeferral(This,value)	\
+    ( (This)->lpVtbl -> GetDeferral(This,value) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2DragStartingEventArgs_INTERFACE_DEFINED__ */
 
 
 #ifndef __ICoreWebView2Environment_INTERFACE_DEFINED__
@@ -50596,6 +51218,90 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2FrameInfo2 = {0x56f85c
 #endif 	/* __ICoreWebView2FrameInfo2_INTERFACE_DEFINED__ */
 
 
+#ifndef __ICoreWebView2FrameInfoCollection_INTERFACE_DEFINED__
+#define __ICoreWebView2FrameInfoCollection_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2FrameInfoCollection */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2FrameInfoCollection = {0x8f834154,0xd38e,0x4d90,{0xaf,0xfb,0x68,0x00,0xa7,0x27,0x28,0x39}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("8f834154-d38e-4d90-affb-6800a7272839")
+    ICoreWebView2FrameInfoCollection : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE GetIterator( 
+            /* [retval][out] */ ICoreWebView2FrameInfoCollectionIterator **value) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2FrameInfoCollectionVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2FrameInfoCollection * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2FrameInfoCollection * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2FrameInfoCollection * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2FrameInfoCollection, GetIterator)
+        HRESULT ( STDMETHODCALLTYPE *GetIterator )( 
+            ICoreWebView2FrameInfoCollection * This,
+            /* [retval][out] */ ICoreWebView2FrameInfoCollectionIterator **value);
+        
+        END_INTERFACE
+    } ICoreWebView2FrameInfoCollectionVtbl;
+
+    interface ICoreWebView2FrameInfoCollection
+    {
+        CONST_VTBL struct ICoreWebView2FrameInfoCollectionVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2FrameInfoCollection_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2FrameInfoCollection_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2FrameInfoCollection_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2FrameInfoCollection_GetIterator(This,value)	\
+    ( (This)->lpVtbl -> GetIterator(This,value) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2FrameInfoCollection_INTERFACE_DEFINED__ */
+
+
 #ifndef __ICoreWebView2FrameInfoCollectionIterator_INTERFACE_DEFINED__
 #define __ICoreWebView2FrameInfoCollectionIterator_INTERFACE_DEFINED__
 
@@ -53143,211 +53849,6 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ObjectCollectionView =
 
 
 #endif 	/* __ICoreWebView2ObjectCollectionView_INTERFACE_DEFINED__ */
-
-
-#ifndef __ICoreWebView2ContextMenuItemCollection_INTERFACE_DEFINED__
-#define __ICoreWebView2ContextMenuItemCollection_INTERFACE_DEFINED__
-
-/* interface ICoreWebView2ContextMenuItemCollection */
-/* [unique][object][uuid] */ 
-
-
-EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ContextMenuItemCollection = {0xf562a2f5,0xc415,0x45cf,{0xb9,0x09,0xd4,0xb7,0xc1,0xe2,0x76,0xd3}};
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("f562a2f5-c415-45cf-b909-d4b7c1e276d3")
-    ICoreWebView2ContextMenuItemCollection : public IUnknown
-    {
-    public:
-        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_Count( 
-            /* [retval][out] */ UINT32 *value) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetValueAtIndex( 
-            /* [in] */ UINT32 index,
-            /* [retval][out] */ ICoreWebView2ContextMenuItem **value) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE RemoveValueAtIndex( 
-            /* [in] */ UINT32 index) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE InsertValueAtIndex( 
-            /* [in] */ UINT32 index,
-            /* [in] */ ICoreWebView2ContextMenuItem *value) = 0;
-        
-    };
-    
-    
-#else 	/* C style interface */
-
-    typedef struct ICoreWebView2ContextMenuItemCollectionVtbl
-    {
-        BEGIN_INTERFACE
-        
-        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            ICoreWebView2ContextMenuItemCollection * This,
-            /* [in] */ REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppvObject);
-        
-        DECLSPEC_XFGVIRT(IUnknown, AddRef)
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            ICoreWebView2ContextMenuItemCollection * This);
-        
-        DECLSPEC_XFGVIRT(IUnknown, Release)
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            ICoreWebView2ContextMenuItemCollection * This);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ContextMenuItemCollection, get_Count)
-        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_Count )( 
-            ICoreWebView2ContextMenuItemCollection * This,
-            /* [retval][out] */ UINT32 *value);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ContextMenuItemCollection, GetValueAtIndex)
-        HRESULT ( STDMETHODCALLTYPE *GetValueAtIndex )( 
-            ICoreWebView2ContextMenuItemCollection * This,
-            /* [in] */ UINT32 index,
-            /* [retval][out] */ ICoreWebView2ContextMenuItem **value);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ContextMenuItemCollection, RemoveValueAtIndex)
-        HRESULT ( STDMETHODCALLTYPE *RemoveValueAtIndex )( 
-            ICoreWebView2ContextMenuItemCollection * This,
-            /* [in] */ UINT32 index);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ContextMenuItemCollection, InsertValueAtIndex)
-        HRESULT ( STDMETHODCALLTYPE *InsertValueAtIndex )( 
-            ICoreWebView2ContextMenuItemCollection * This,
-            /* [in] */ UINT32 index,
-            /* [in] */ ICoreWebView2ContextMenuItem *value);
-        
-        END_INTERFACE
-    } ICoreWebView2ContextMenuItemCollectionVtbl;
-
-    interface ICoreWebView2ContextMenuItemCollection
-    {
-        CONST_VTBL struct ICoreWebView2ContextMenuItemCollectionVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define ICoreWebView2ContextMenuItemCollection_QueryInterface(This,riid,ppvObject)	\
-    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
-
-#define ICoreWebView2ContextMenuItemCollection_AddRef(This)	\
-    ( (This)->lpVtbl -> AddRef(This) ) 
-
-#define ICoreWebView2ContextMenuItemCollection_Release(This)	\
-    ( (This)->lpVtbl -> Release(This) ) 
-
-
-#define ICoreWebView2ContextMenuItemCollection_get_Count(This,value)	\
-    ( (This)->lpVtbl -> get_Count(This,value) ) 
-
-#define ICoreWebView2ContextMenuItemCollection_GetValueAtIndex(This,index,value)	\
-    ( (This)->lpVtbl -> GetValueAtIndex(This,index,value) ) 
-
-#define ICoreWebView2ContextMenuItemCollection_RemoveValueAtIndex(This,index)	\
-    ( (This)->lpVtbl -> RemoveValueAtIndex(This,index) ) 
-
-#define ICoreWebView2ContextMenuItemCollection_InsertValueAtIndex(This,index,value)	\
-    ( (This)->lpVtbl -> InsertValueAtIndex(This,index,value) ) 
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-
-#endif 	/* __ICoreWebView2ContextMenuItemCollection_INTERFACE_DEFINED__ */
-
-
-#ifndef __ICoreWebView2FrameInfoCollection_INTERFACE_DEFINED__
-#define __ICoreWebView2FrameInfoCollection_INTERFACE_DEFINED__
-
-/* interface ICoreWebView2FrameInfoCollection */
-/* [unique][object][uuid] */ 
-
-
-EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2FrameInfoCollection = {0x8f834154,0xd38e,0x4d90,{0xaf,0xfb,0x68,0x00,0xa7,0x27,0x28,0x39}};
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("8f834154-d38e-4d90-affb-6800a7272839")
-    ICoreWebView2FrameInfoCollection : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE GetIterator( 
-            /* [retval][out] */ ICoreWebView2FrameInfoCollectionIterator **value) = 0;
-        
-    };
-    
-    
-#else 	/* C style interface */
-
-    typedef struct ICoreWebView2FrameInfoCollectionVtbl
-    {
-        BEGIN_INTERFACE
-        
-        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            ICoreWebView2FrameInfoCollection * This,
-            /* [in] */ REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppvObject);
-        
-        DECLSPEC_XFGVIRT(IUnknown, AddRef)
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            ICoreWebView2FrameInfoCollection * This);
-        
-        DECLSPEC_XFGVIRT(IUnknown, Release)
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            ICoreWebView2FrameInfoCollection * This);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2FrameInfoCollection, GetIterator)
-        HRESULT ( STDMETHODCALLTYPE *GetIterator )( 
-            ICoreWebView2FrameInfoCollection * This,
-            /* [retval][out] */ ICoreWebView2FrameInfoCollectionIterator **value);
-        
-        END_INTERFACE
-    } ICoreWebView2FrameInfoCollectionVtbl;
-
-    interface ICoreWebView2FrameInfoCollection
-    {
-        CONST_VTBL struct ICoreWebView2FrameInfoCollectionVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define ICoreWebView2FrameInfoCollection_QueryInterface(This,riid,ppvObject)	\
-    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
-
-#define ICoreWebView2FrameInfoCollection_AddRef(This)	\
-    ( (This)->lpVtbl -> AddRef(This) ) 
-
-#define ICoreWebView2FrameInfoCollection_Release(This)	\
-    ( (This)->lpVtbl -> Release(This) ) 
-
-
-#define ICoreWebView2FrameInfoCollection_GetIterator(This,value)	\
-    ( (This)->lpVtbl -> GetIterator(This,value) ) 
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-
-#endif 	/* __ICoreWebView2FrameInfoCollection_INTERFACE_DEFINED__ */
 
 
 #ifndef __ICoreWebView2ObjectCollection_INTERFACE_DEFINED__

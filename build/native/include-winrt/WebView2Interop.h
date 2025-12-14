@@ -84,6 +84,13 @@ typedef interface ICoreWebView2EnvironmentInterop ICoreWebView2EnvironmentIntero
 #endif 	/* __ICoreWebView2EnvironmentInterop_FWD_DEFINED__ */
 
 
+#ifndef __ICoreWebView2CompositionControllerInterop3_FWD_DEFINED__
+#define __ICoreWebView2CompositionControllerInterop3_FWD_DEFINED__
+typedef interface ICoreWebView2CompositionControllerInterop3 ICoreWebView2CompositionControllerInterop3;
+
+#endif 	/* __ICoreWebView2CompositionControllerInterop3_FWD_DEFINED__ */
+
+
 /* header files for imported files */
 #include "oaidl.h"
 #include "WebView2.h"
@@ -624,6 +631,168 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2EnvironmentInterop = {
 
 
 #endif 	/* __ICoreWebView2EnvironmentInterop_INTERFACE_DEFINED__ */
+
+
+#ifndef __ICoreWebView2CompositionControllerInterop3_INTERFACE_DEFINED__
+#define __ICoreWebView2CompositionControllerInterop3_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2CompositionControllerInterop3 */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2CompositionControllerInterop3 = {0xb211edcf,0x7ef3,0x44ad,{0x8a,0xed,0x4d,0x3e,0xf0,0xaf,0x18,0x13}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("b211edcf-7ef3-44ad-8aed-4d3ef0af1813")
+    ICoreWebView2CompositionControllerInterop3 : public ICoreWebView2CompositionControllerInterop2
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE add_DragStarting( 
+            /* [in] */ ICoreWebView2DragStartingEventHandler *eventHandler,
+            /* [out] */ EventRegistrationToken *token) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE remove_DragStarting( 
+            /* [in] */ EventRegistrationToken token) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2CompositionControllerInterop3Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2CompositionControllerInterop3 * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2CompositionControllerInterop3 * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2CompositionControllerInterop3 * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionControllerInterop, get_AutomationProvider)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_AutomationProvider )( 
+            ICoreWebView2CompositionControllerInterop3 * This,
+            /* [retval][out] */ IUnknown **provider);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionControllerInterop, get_RootVisualTarget)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_RootVisualTarget )( 
+            ICoreWebView2CompositionControllerInterop3 * This,
+            /* [retval][out] */ IUnknown **target);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionControllerInterop, put_RootVisualTarget)
+        /* [propput] */ HRESULT ( STDMETHODCALLTYPE *put_RootVisualTarget )( 
+            ICoreWebView2CompositionControllerInterop3 * This,
+            /* [in] */ IUnknown *target);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionControllerInterop2, DragEnter)
+        HRESULT ( STDMETHODCALLTYPE *DragEnter )( 
+            ICoreWebView2CompositionControllerInterop3 * This,
+            /* [in] */ IDataObject *dataObject,
+            /* [in] */ DWORD keyState,
+            /* [in] */ POINT point,
+            /* [retval][out] */ DWORD *effect);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionControllerInterop2, DragLeave)
+        HRESULT ( STDMETHODCALLTYPE *DragLeave )( 
+            ICoreWebView2CompositionControllerInterop3 * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionControllerInterop2, DragOver)
+        HRESULT ( STDMETHODCALLTYPE *DragOver )( 
+            ICoreWebView2CompositionControllerInterop3 * This,
+            /* [in] */ DWORD keyState,
+            /* [in] */ POINT point,
+            /* [retval][out] */ DWORD *effect);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionControllerInterop2, Drop)
+        HRESULT ( STDMETHODCALLTYPE *Drop )( 
+            ICoreWebView2CompositionControllerInterop3 * This,
+            /* [in] */ IDataObject *dataObject,
+            /* [in] */ DWORD keyState,
+            /* [in] */ POINT point,
+            /* [retval][out] */ DWORD *effect);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionControllerInterop3, add_DragStarting)
+        HRESULT ( STDMETHODCALLTYPE *add_DragStarting )( 
+            ICoreWebView2CompositionControllerInterop3 * This,
+            /* [in] */ ICoreWebView2DragStartingEventHandler *eventHandler,
+            /* [out] */ EventRegistrationToken *token);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2CompositionControllerInterop3, remove_DragStarting)
+        HRESULT ( STDMETHODCALLTYPE *remove_DragStarting )( 
+            ICoreWebView2CompositionControllerInterop3 * This,
+            /* [in] */ EventRegistrationToken token);
+        
+        END_INTERFACE
+    } ICoreWebView2CompositionControllerInterop3Vtbl;
+
+    interface ICoreWebView2CompositionControllerInterop3
+    {
+        CONST_VTBL struct ICoreWebView2CompositionControllerInterop3Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2CompositionControllerInterop3_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2CompositionControllerInterop3_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2CompositionControllerInterop3_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2CompositionControllerInterop3_get_AutomationProvider(This,provider)	\
+    ( (This)->lpVtbl -> get_AutomationProvider(This,provider) ) 
+
+#define ICoreWebView2CompositionControllerInterop3_get_RootVisualTarget(This,target)	\
+    ( (This)->lpVtbl -> get_RootVisualTarget(This,target) ) 
+
+#define ICoreWebView2CompositionControllerInterop3_put_RootVisualTarget(This,target)	\
+    ( (This)->lpVtbl -> put_RootVisualTarget(This,target) ) 
+
+
+#define ICoreWebView2CompositionControllerInterop3_DragEnter(This,dataObject,keyState,point,effect)	\
+    ( (This)->lpVtbl -> DragEnter(This,dataObject,keyState,point,effect) ) 
+
+#define ICoreWebView2CompositionControllerInterop3_DragLeave(This)	\
+    ( (This)->lpVtbl -> DragLeave(This) ) 
+
+#define ICoreWebView2CompositionControllerInterop3_DragOver(This,keyState,point,effect)	\
+    ( (This)->lpVtbl -> DragOver(This,keyState,point,effect) ) 
+
+#define ICoreWebView2CompositionControllerInterop3_Drop(This,dataObject,keyState,point,effect)	\
+    ( (This)->lpVtbl -> Drop(This,dataObject,keyState,point,effect) ) 
+
+
+#define ICoreWebView2CompositionControllerInterop3_add_DragStarting(This,eventHandler,token)	\
+    ( (This)->lpVtbl -> add_DragStarting(This,eventHandler,token) ) 
+
+#define ICoreWebView2CompositionControllerInterop3_remove_DragStarting(This,token)	\
+    ( (This)->lpVtbl -> remove_DragStarting(This,token) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2CompositionControllerInterop3_INTERFACE_DEFINED__ */
 
 #endif /* __WebView2Interop_LIBRARY_DEFINED__ */
 

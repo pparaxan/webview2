@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
   <Relationship Type="http://schemas.microsoft.com/packaging/2010/07/manifest" Target="/Microsoft.Web.WebView2.nuspec" Id="R539728A0D430C835" />
-  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/34ff1bdc526b4fb8bb23fa088b628372.psmdcp" Id="R838AF49EE8761FA5" />
+  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/b214181ea06b4948b5dc52c9cbeeaa33.psmdcp" Id="R9CDDD1F2DB64AEAB" />
 </Relationships>

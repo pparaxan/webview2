@@ -16,20 +16,18 @@ interface ICoreWebView2Experimental31;
 interface ICoreWebView2Experimental32;
 interface ICoreWebView2ExperimentalSensitivityInfoChangedEventHandler;
 interface ICoreWebView2ExperimentalCompositionController4;
-interface ICoreWebView2ExperimentalCompositionController6;
-interface ICoreWebView2ExperimentalDragStartingEventHandler;
 interface ICoreWebView2ExperimentalDedicatedWorker;
 interface ICoreWebView2ExperimentalDedicatedWorkerDedicatedWorkerCreatedEventHandler;
 interface ICoreWebView2ExperimentalDedicatedWorkerDestroyingEventHandler;
 interface ICoreWebView2ExperimentalDedicatedWorkerWebMessageReceivedEventHandler;
 interface ICoreWebView2ExperimentalDedicatedWorkerCreatedEventArgs;
-interface ICoreWebView2ExperimentalDragStartingEventArgs;
 interface ICoreWebView2ExperimentalEnvironment3;
 interface ICoreWebView2ExperimentalUpdateRuntimeCompletedHandler;
 interface ICoreWebView2ExperimentalEnvironment12;
 interface ICoreWebView2ExperimentalRenderAdapterLUIDChangedEventHandler;
 interface ICoreWebView2ExperimentalEnvironment15;
 interface ICoreWebView2ExperimentalRestartRequestedEventHandler;
+interface ICoreWebView2ExperimentalEnvironmentOptions;
 interface ICoreWebView2ExperimentalFrame7;
 interface ICoreWebView2ExperimentalFrame9;
 interface ICoreWebView2ExperimentalFrameDedicatedWorkerCreatedEventHandler;
@@ -76,6 +74,15 @@ interface ICoreWebView2ExperimentalUpdateRuntimeResult;
 interface ICoreWebView2ExperimentalWebTexture;
 interface ICoreWebView2ExperimentalWindowControlsOverlay;
 // Enums and structs
+
+/// Specifies the scope for port configuration.
+[v1_enum]
+typedef enum COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE {
+  /// Scope applies to all components.
+  COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE_DEFAULT,
+  /// Applies only to WebRTC peer-to-peer connection.
+  COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE_WEB_RTC,
+} COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE;
 
 /// Specifies the restart requested priority level.
 [v1_enum]
@@ -136,6 +143,13 @@ typedef enum COREWEBVIEW2_TEXTURE_STREAM_ERROR_KIND {
   /// of available textures.
   COREWEBVIEW2_TEXTURE_STREAM_ERROR_KIND_TEXTURE_IN_USE,
 } COREWEBVIEW2_TEXTURE_STREAM_ERROR_KIND;
+
+/// Specifies the transport protocol for port configuration.
+[v1_enum]
+typedef enum COREWEBVIEW2_TRANSPORT_PROTOCOL_KIND {
+  /// User Datagram Protocol - fast, connectionless protocol.
+  COREWEBVIEW2_TRANSPORT_PROTOCOL_KIND_UDP,
+} COREWEBVIEW2_TRANSPORT_PROTOCOL_KIND;
 
 /// Status of UpdateRuntime operation result.
 [v1_enum]
@@ -468,49 +482,6 @@ interface ICoreWebView2ExperimentalUpdateRuntimeResult : IUnknown {
   [propget] HRESULT ExtendedError([out, retval] HRESULT* error);
 }
 
-/// Receives `DragStarting` events.
-[uuid(3b149321-83c3-5d1f-b03f-a42899bc1c15), object, pointer_default(unique)]
-interface ICoreWebView2ExperimentalDragStartingEventHandler : IUnknown {
-  /// Provides the event args for the corresponding event.
-  HRESULT Invoke(
-      [in] ICoreWebView2CompositionController* sender,
-      [in] ICoreWebView2ExperimentalDragStartingEventArgs* args);
-}
-
-
-/// A continuation of the ICoreWebView2CompositionController4 interface.
-/// This interface includes an API which exposes the DragStarting event.
-[uuid(975d6824-6a02-5e98-ab7c-e4679d5357f4), object, pointer_default(unique)]
-interface ICoreWebView2ExperimentalCompositionController6 : IUnknown {
-  /// Adds an event handler for the `DragStarting` event.
-  /// `DragStarting` is a deferrable event that is raised when the WebView2
-  /// detects a drag started within the WebView2.
-  /// WebView2's default drag behavior is to synchronously call DoDragDrop when
-  /// it detects drag. This event's args expose the data WebView2 uses to call
-  /// DoDragDrop to allow users to implement their own drag logic and override
-  /// WebView2's.
-  /// Handlers of this event must set the `Handled` event to true in order to
-  /// override WebView2's default logic. When invoking drag logic asynchronously
-  /// using a deferral, handlers must take care to follow these steps in order:
-  ///   * Invoke asynchronous drag logic
-  ///   * Set the event args `Handled` property true
-  ///   * Complete the deferral
-  /// In the asynchronous case, WebView2 decides whether or not to invoke its
-  /// default drag logic when the deferral completes. So the event args'
-  /// `Handled` property must be true when the deferral is completed.
-  /// \snippet ScenarioDragDropOverride.cpp DragStarting
-  HRESULT add_DragStarting(
-      [in] ICoreWebView2ExperimentalDragStartingEventHandler* eventHandler,
-      [out] EventRegistrationToken* token);
-
-  /// Removes an event handler previously added with `add_DragStarting`.
-  HRESULT remove_DragStarting(
-      [in] EventRegistrationToken token);
-
-
-}
-
-
 /// Receives `DedicatedWorkerCreated` events.
 [uuid(a85b1b35-f6d7-5ae6-9fd7-57905deff79f), object, pointer_default(unique)]
 interface ICoreWebView2ExperimentalDedicatedWorkerDedicatedWorkerCreatedEventHandler : IUnknown {
@@ -698,49 +669,6 @@ interface ICoreWebView2ExperimentalDedicatedWorkerCreatedEventArgs : IUnknown {
 }
 
 
-
-/// Event args for the `DragStarting` event.
-[uuid(5e70e0e8-5cd0-5cfa-8f6f-d91b48a3755c), object, pointer_default(unique)]
-interface ICoreWebView2ExperimentalDragStartingEventArgs : IUnknown {
-  /// The [OLE DROPEFFECT](/windows/win32/com/dropeffect-constants)
-  /// values this drag data supports.
-  [propget] HRESULT AllowedDropEffects([out, retval] DWORD* value);
-
-
-  /// The data to be dragged.
-  [propget] HRESULT Data([out, retval] IDataObject** value);
-
-
-  /// Gets the `Handled` property.
-  [propget] HRESULT Handled([out, retval] BOOL* value);
-
-
-  /// Indicates whether this event has been handled by the app.  If the
-  /// app handles this event, WebView2 will not initiate drag drop.  If
-  /// the app does not handle the event, WebView2 will initiate its own
-  /// drag drop logic.
-  [propput] HRESULT Handled([in] BOOL value);
-
-
-  /// The position at which drag was detected given in WebView2 relative
-  /// coordinates
-  [propget] HRESULT Position([out, retval] POINT* value);
-
-
-
-  /// Returns an `ICoreWebView2Deferral` object. Use this operation to complete
-  /// the CoreWebView2DragStartingEventArgs.
-  /// 
-  /// Until the deferral is completed, subsequent attempts to initiate drag
-  /// in the WebView2 will fail and if the cursor was changed as part of
-  /// drag it will not restore.
-  HRESULT GetDeferral(
-      [out, retval] ICoreWebView2Deferral** value);
-
-
-}
-
-
 /// Receives `RestartRequested` events.
 [uuid(a5d3e2ac-fee2-59c9-bd70-9e68181a95a1), object, pointer_default(unique)]
 interface ICoreWebView2ExperimentalRestartRequestedEventHandler : IUnknown {
@@ -775,6 +703,83 @@ interface ICoreWebView2ExperimentalEnvironment15 : IUnknown {
   /// Removes an event handler previously added with `add_RestartRequested`.
   HRESULT remove_RestartRequested(
       [in] EventRegistrationToken token);
+
+
+}
+
+
+
+/// Additional options used to create WebView2 Environment to manage port range configuration.
+[uuid(2c0f597d-2958-5a94-82f9-c750cf86cb88), object, pointer_default(unique)]
+interface ICoreWebView2ExperimentalEnvironmentOptions : IUnknown {
+  /// Sets the allowed port range restriction for the specified scope and transport protocol.
+  /// 
+  /// This API enables WebView2 to operate within enterprise network or firewall
+  /// restrictions by limiting network communication to a defined port range.
+  /// It provides fine-grained control by allowing port restrictions to be applied
+  /// per network component scope, such as WebRTC.
+  /// 
+  /// Currently, only WebRTC UDP Port Range restriction is supported.
+  /// 
+  /// `minPort` and `maxPort` must be within the range 1025-65535 (inclusive), or must both be the sentinel value 0.
+  /// `minPort` must be less than or equal to `maxPort`.
+  /// If `minPort` equals `maxPort`, the range represents a single port.
+  /// 
+  /// Calls with invalid ranges fail with `E_INVALIDARG`.
+  /// 
+  /// A component-specific scope (e.g. _WEB_RTC) always takes precedence over _DEFAULT for that component in `SetAllowedPortRange`.
+  /// `_DEFAULT` defines the port range restrictions for all components without specific overrides.
+  /// Passing `(0, 0)` for a component scope unset its specific range restriction and inherit range restriction from `_DEFAULT`.
+  /// If `_DEFAULT` is set and a specific scope is unset, that component inherits `_DEFAULT`.
+  /// Passing `(1025,65535)` for a component scope make port range unrestricted for that component.
+  ///      
+  /// | Scope State                                         | Behaviour                                                                              |
+  /// | ----------------------------------------------------| ---------------------------------------------------------------------------------------|
+  /// | Only `_DEFAULT` is set                              | `_DEFAULT` applies port range restrictions to all network components                   |
+  /// | `_DEFAULT` and `_WEB_RTC` are both set              | `_WEB_RTC` port range restrictions applies to WebRTC; `_DEFAULT` applies to others     |
+  /// | `_WEB_RTC` only is set                              | `_WEB_RTC` applies port range restrictions only to WebRTC; others unrestricted         | 
+  /// | `_DEFAULT` set and `_WEB_RTC` reset to `(0,0)`      | `_DEFAULT` applies port range restrictions to all and WebRTC inherits `_DEFAULT`       |
+  /// | `_DEFAULT` set and `_WEB_RTC` set to `(1025,65535)` | `_DEFAULT` applies port range restrictions to all except WebRTC which is unrestricted  |
+  /// 
+  /// `scope` Scope on which restrictions will apply.
+  /// `protocol` Transport protocol on which restrictions will apply.
+  /// `minPort` The minimum allowed port number (inclusive).
+  /// `maxPort` The maximum allowed port number (inclusive).
+  HRESULT SetAllowedPortRange(
+      [in] COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE scope,
+      [in] COREWEBVIEW2_TRANSPORT_PROTOCOL_KIND protocol,
+      [in] INT32 minPort,
+      [in] INT32 maxPort
+  );
+
+  /// Retrieves the effective allowed port range for the specified component scope and transport protocol.
+  /// 
+  /// `GetEffectiveAllowedPortRange` returns the effective port range in the effect previously set via `SetAllowedPortRange`.
+  /// 
+  /// If the scope is _DEFAULT or if the specified scope is unset, then the _DEFAULT port range is returned.
+  /// A range of (0, 0) means that no port range has been set.
+  /// 
+  /// Querying `_DEFAULT` only returns `_DEFAULT`; it does not aggregate component-specific settings.
+  /// If neither `_DEFAULT` nor a component-specific scope is set, the default `(0,0)` (unset) is returned.
+  /// 
+  /// | `GetEffectiveAllowedPortRange` Scope query                           | Returned Range                |
+  /// | -------------------------------------------------------------------- | ----------------------------- |
+  /// | Pass `_WEB_RTC` when only `_DEFAULT` is set                          | Returns `_DEFAULT` range      |
+  /// | Pass `_WEB_RTC` when `_WEB_RTC` explicitly set                       | Returns `_WEB_RTC` range      |
+  /// | Pass `_WEB_RTC` when `_DEFAULT` unset and `_WEB_RTC` unset           | Returns `(0, 0)`              |
+  /// | Pass `_WEB_RTC` when `_DEFAULT` set and `_WEB_RTC` reset to `(0, 0)` | Returns `_DEFAULT`            |
+  /// | Pass `_DEFAULT` when only `_WEB_RTC` set                             | Returns  `(0,0)`              |
+  /// 
+  /// `scope`  Scope on which restrictions is applied.
+  /// `protocol` Transport protocol on which restrictions is applied.
+  /// `minPort` Receives the minimum allowed port number (inclusive).
+  /// `maxPort` Receives the maximum allowed port number (inclusive).
+  HRESULT GetEffectiveAllowedPortRange(
+      [in] COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE scope,
+      [in] COREWEBVIEW2_TRANSPORT_PROTOCOL_KIND protocol,
+      [out] INT32* minPort,
+      [out] INT32* maxPort
+  );
 
 
 }
@@ -2131,24 +2136,5 @@ interface ICoreWebView2Experimental32 : IUnknown {
 }
 
 
-/// Interop interface for the CoreWebView2CompositionController WinRT object to
-/// allow WinRT end developers to be able to access the COM interface arguments.
-/// This interface is implemented by the
-/// Microsoft.Web.WebView2.Core.CoreWebView2CompositionController runtime class.
-[uuid(6b0bf729-3d27-46c6-901c-5f1516d32de1), object, pointer_default(unique)]
-interface ICoreWebView2ExperimentalCompositionControllerInterop3 : IUnknown {
-  /// Adds an event handler for the `DragStarting` event.  `DragStarting` is
-  /// raised when the WebView2 detects a drag started within the WebView2.
-  /// This event can be used to override WebView2's default drag starting
-  /// logic.
-  HRESULT add_DragStarting(
-      [in] ICoreWebView2ExperimentalDragStartingEventHandler* eventHandler,
-      [out] EventRegistrationToken* token);
 
-  /// Removes an event handler previously added with `add_DragStarting`.
-  HRESULT remove_DragStarting(
-      [in] EventRegistrationToken token);
-
-
-}
 }

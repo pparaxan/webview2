@@ -156,6 +156,27 @@ interface ICoreWebView2EnvironmentInterop : IUnknown {
                                          [out, retval] IUnknown** provider);
 }
 
+/// Interop interface for the CoreWebView2CompositionController WinRT object to
+/// allow WinRT end developers to be able to access the COM interface arguments.
+/// This interface is implemented by the
+/// Microsoft.Web.WebView2.Core.CoreWebView2CompositionController runtime class.
+[uuid(b211edcf-7ef3-44ad-8aed-4d3ef0af1813), object, pointer_default(unique)]
+interface ICoreWebView2CompositionControllerInterop3 : ICoreWebView2CompositionControllerInterop2 {
+  /// Adds an event handler for the `DragStarting` event.  `DragStarting` is
+  /// raised when the WebView2 detects a drag started within the WebView2.
+  /// This event can be used to override WebView2's default drag starting
+  /// logic.
+  HRESULT add_DragStarting(
+      [in] ICoreWebView2DragStartingEventHandler* eventHandler,
+      [out] EventRegistrationToken* token);
+
+  /// Removes an event handler previously added with `add_DragStarting`.
+  HRESULT remove_DragStarting(
+      [in] EventRegistrationToken token);
+
+
+}
+
 // End of interfaces
 
 }

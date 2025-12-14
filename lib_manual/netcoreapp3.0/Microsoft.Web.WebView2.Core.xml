@@ -4,6 +4,15 @@
         <name>Microsoft.Web.WebView2.Core</name>
     </assembly>
     <members>
+        <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2AllowedPortRangeScope">
+            <summary>Specifies the scope for port configuration.</summary>
+        </member>
+        <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2AllowedPortRangeScope.Default">
+            <summary>Scope applies to all components.</summary>
+        </member>
+        <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2AllowedPortRangeScope.WebRtc">
+            <summary>Applies only to WebRTC peer-to-peer connection.</summary>
+        </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2BoundsMode">
             <summary>Mode for how the Bounds property is interpreted in relation to the RasterizationScale property.</summary>
         </member>
@@ -1181,6 +1190,12 @@
             behavior](/microsoft-edge/web-platform/tracking-prevention#current-tracking-prevention-behavior)
             for fine-grained information on what is being blocked with this level and
             can change with different Edge versions.</summary>
+        </member>
+        <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2TransportProtocolKind">
+            <summary>Specifies the transport protocol for port configuration.</summary>
+        </member>
+        <member name="F:Microsoft.Web.WebView2.Core.CoreWebView2TransportProtocolKind.Udp">
+            <summary>User Datagram Protocol - fast, connectionless protocol.</summary>
         </member>
         <member name="T:Microsoft.Web.WebView2.Core.CoreWebView2UpdateRuntimeStatus">
             <summary>Status of UpdateRuntime operation result.</summary>
@@ -4632,6 +4647,7 @@
             <summary></summary>
             <summary></summary>
             <summary></summary>
+            <summary></summary>
             <summary>
             Options used to create WebView2 Environment.
             </summary>
@@ -4673,6 +4689,12 @@
             </summary><remarks>
             This defaults to the WebView2 Runtime version that corresponds with the version of the SDK the app is using. The format of this value is the same as the format of the <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Environment.BrowserVersionString" /> property and other BrowserVersion values. Only the version part of the BrowserVersion value is respected. The channel suffix, if it exists, is ignored. The version of the WebView2 Runtime binaries actually used may be different from the specified TargetCompatibleBrowserVersion. The binaries are only guaranteed to be compatible. Verify the actual version on the <see cref="P:Microsoft.Web.WebView2.Core.CoreWebView2Environment.BrowserVersionString" /> property.
             </remarks>
+        </member>
+        <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2EnvironmentOptions.SetAllowedPortRange(Microsoft.Web.WebView2.Core.CoreWebView2AllowedPortRangeScope,Microsoft.Web.WebView2.Core.CoreWebView2TransportProtocolKind,System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2EnvironmentOptions.GetEffectiveAllowedPortRange(Microsoft.Web.WebView2.Core.CoreWebView2AllowedPortRangeScope,Microsoft.Web.WebView2.Core.CoreWebView2TransportProtocolKind,System.Int32@,System.Int32@)">
+            <summary></summary>
         </member>
         <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2EnvironmentOptions.ExclusiveUserDataFolderAccess">
             <summary>

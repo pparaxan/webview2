@@ -98,20 +98,6 @@ typedef interface ICoreWebView2ExperimentalCompositionController4 ICoreWebView2E
 #endif 	/* __ICoreWebView2ExperimentalCompositionController4_FWD_DEFINED__ */
 
 
-#ifndef __ICoreWebView2ExperimentalCompositionController6_FWD_DEFINED__
-#define __ICoreWebView2ExperimentalCompositionController6_FWD_DEFINED__
-typedef interface ICoreWebView2ExperimentalCompositionController6 ICoreWebView2ExperimentalCompositionController6;
-
-#endif 	/* __ICoreWebView2ExperimentalCompositionController6_FWD_DEFINED__ */
-
-
-#ifndef __ICoreWebView2ExperimentalDragStartingEventHandler_FWD_DEFINED__
-#define __ICoreWebView2ExperimentalDragStartingEventHandler_FWD_DEFINED__
-typedef interface ICoreWebView2ExperimentalDragStartingEventHandler ICoreWebView2ExperimentalDragStartingEventHandler;
-
-#endif 	/* __ICoreWebView2ExperimentalDragStartingEventHandler_FWD_DEFINED__ */
-
-
 #ifndef __ICoreWebView2ExperimentalDedicatedWorker_FWD_DEFINED__
 #define __ICoreWebView2ExperimentalDedicatedWorker_FWD_DEFINED__
 typedef interface ICoreWebView2ExperimentalDedicatedWorker ICoreWebView2ExperimentalDedicatedWorker;
@@ -145,13 +131,6 @@ typedef interface ICoreWebView2ExperimentalDedicatedWorkerWebMessageReceivedEven
 typedef interface ICoreWebView2ExperimentalDedicatedWorkerCreatedEventArgs ICoreWebView2ExperimentalDedicatedWorkerCreatedEventArgs;
 
 #endif 	/* __ICoreWebView2ExperimentalDedicatedWorkerCreatedEventArgs_FWD_DEFINED__ */
-
-
-#ifndef __ICoreWebView2ExperimentalDragStartingEventArgs_FWD_DEFINED__
-#define __ICoreWebView2ExperimentalDragStartingEventArgs_FWD_DEFINED__
-typedef interface ICoreWebView2ExperimentalDragStartingEventArgs ICoreWebView2ExperimentalDragStartingEventArgs;
-
-#endif 	/* __ICoreWebView2ExperimentalDragStartingEventArgs_FWD_DEFINED__ */
 
 
 #ifndef __ICoreWebView2ExperimentalEnvironment3_FWD_DEFINED__
@@ -194,6 +173,13 @@ typedef interface ICoreWebView2ExperimentalEnvironment15 ICoreWebView2Experiment
 typedef interface ICoreWebView2ExperimentalRestartRequestedEventHandler ICoreWebView2ExperimentalRestartRequestedEventHandler;
 
 #endif 	/* __ICoreWebView2ExperimentalRestartRequestedEventHandler_FWD_DEFINED__ */
+
+
+#ifndef __ICoreWebView2ExperimentalEnvironmentOptions_FWD_DEFINED__
+#define __ICoreWebView2ExperimentalEnvironmentOptions_FWD_DEFINED__
+typedef interface ICoreWebView2ExperimentalEnvironmentOptions ICoreWebView2ExperimentalEnvironmentOptions;
+
+#endif 	/* __ICoreWebView2ExperimentalEnvironmentOptions_FWD_DEFINED__ */
 
 
 #ifndef __ICoreWebView2ExperimentalFrame7_FWD_DEFINED__
@@ -504,13 +490,6 @@ typedef interface ICoreWebView2ExperimentalWindowControlsOverlay ICoreWebView2Ex
 #endif 	/* __ICoreWebView2ExperimentalWindowControlsOverlay_FWD_DEFINED__ */
 
 
-#ifndef __ICoreWebView2ExperimentalCompositionControllerInterop3_FWD_DEFINED__
-#define __ICoreWebView2ExperimentalCompositionControllerInterop3_FWD_DEFINED__
-typedef interface ICoreWebView2ExperimentalCompositionControllerInterop3 ICoreWebView2ExperimentalCompositionControllerInterop3;
-
-#endif 	/* __ICoreWebView2ExperimentalCompositionControllerInterop3_FWD_DEFINED__ */
-
-
 /* header files for imported files */
 #include "WebView2.h"
 
@@ -589,7 +568,12 @@ extern "C"{
 
 
 
-
+typedef /* [v1_enum] */ 
+enum COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE
+    {
+        COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE_DEFAULT	= 0,
+        COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE_WEB_RTC	= ( COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE_DEFAULT + 1 ) 
+    } 	COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE;
 
 typedef /* [v1_enum] */ 
 enum COREWEBVIEW2_RESTART_REQUESTED_PRIORITY
@@ -619,6 +603,12 @@ enum COREWEBVIEW2_TEXTURE_STREAM_ERROR_KIND
         COREWEBVIEW2_TEXTURE_STREAM_ERROR_KIND_TEXTURE_ERROR	= ( COREWEBVIEW2_TEXTURE_STREAM_ERROR_KIND_NO_VIDEO_TRACK_STARTED + 1 ) ,
         COREWEBVIEW2_TEXTURE_STREAM_ERROR_KIND_TEXTURE_IN_USE	= ( COREWEBVIEW2_TEXTURE_STREAM_ERROR_KIND_TEXTURE_ERROR + 1 ) 
     } 	COREWEBVIEW2_TEXTURE_STREAM_ERROR_KIND;
+
+typedef /* [v1_enum] */ 
+enum COREWEBVIEW2_TRANSPORT_PROTOCOL_KIND
+    {
+        COREWEBVIEW2_TRANSPORT_PROTOCOL_KIND_UDP	= 0
+    } 	COREWEBVIEW2_TRANSPORT_PROTOCOL_KIND;
 
 typedef /* [v1_enum] */ 
 enum COREWEBVIEW2_UPDATE_RUNTIME_STATUS
@@ -1309,189 +1299,6 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalCompositio
 #endif 	/* __ICoreWebView2ExperimentalCompositionController4_INTERFACE_DEFINED__ */
 
 
-#ifndef __ICoreWebView2ExperimentalCompositionController6_INTERFACE_DEFINED__
-#define __ICoreWebView2ExperimentalCompositionController6_INTERFACE_DEFINED__
-
-/* interface ICoreWebView2ExperimentalCompositionController6 */
-/* [unique][object][uuid] */ 
-
-
-EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalCompositionController6 = {0x975d6824,0x6a02,0x5e98,{0xab,0x7c,0xe4,0x67,0x9d,0x53,0x57,0xf4}};
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("975d6824-6a02-5e98-ab7c-e4679d5357f4")
-    ICoreWebView2ExperimentalCompositionController6 : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE add_DragStarting( 
-            /* [in] */ ICoreWebView2ExperimentalDragStartingEventHandler *eventHandler,
-            /* [out] */ EventRegistrationToken *token) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE remove_DragStarting( 
-            /* [in] */ EventRegistrationToken token) = 0;
-        
-    };
-    
-    
-#else 	/* C style interface */
-
-    typedef struct ICoreWebView2ExperimentalCompositionController6Vtbl
-    {
-        BEGIN_INTERFACE
-        
-        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            ICoreWebView2ExperimentalCompositionController6 * This,
-            /* [in] */ REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppvObject);
-        
-        DECLSPEC_XFGVIRT(IUnknown, AddRef)
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            ICoreWebView2ExperimentalCompositionController6 * This);
-        
-        DECLSPEC_XFGVIRT(IUnknown, Release)
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            ICoreWebView2ExperimentalCompositionController6 * This);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalCompositionController6, add_DragStarting)
-        HRESULT ( STDMETHODCALLTYPE *add_DragStarting )( 
-            ICoreWebView2ExperimentalCompositionController6 * This,
-            /* [in] */ ICoreWebView2ExperimentalDragStartingEventHandler *eventHandler,
-            /* [out] */ EventRegistrationToken *token);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalCompositionController6, remove_DragStarting)
-        HRESULT ( STDMETHODCALLTYPE *remove_DragStarting )( 
-            ICoreWebView2ExperimentalCompositionController6 * This,
-            /* [in] */ EventRegistrationToken token);
-        
-        END_INTERFACE
-    } ICoreWebView2ExperimentalCompositionController6Vtbl;
-
-    interface ICoreWebView2ExperimentalCompositionController6
-    {
-        CONST_VTBL struct ICoreWebView2ExperimentalCompositionController6Vtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define ICoreWebView2ExperimentalCompositionController6_QueryInterface(This,riid,ppvObject)	\
-    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
-
-#define ICoreWebView2ExperimentalCompositionController6_AddRef(This)	\
-    ( (This)->lpVtbl -> AddRef(This) ) 
-
-#define ICoreWebView2ExperimentalCompositionController6_Release(This)	\
-    ( (This)->lpVtbl -> Release(This) ) 
-
-
-#define ICoreWebView2ExperimentalCompositionController6_add_DragStarting(This,eventHandler,token)	\
-    ( (This)->lpVtbl -> add_DragStarting(This,eventHandler,token) ) 
-
-#define ICoreWebView2ExperimentalCompositionController6_remove_DragStarting(This,token)	\
-    ( (This)->lpVtbl -> remove_DragStarting(This,token) ) 
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-
-#endif 	/* __ICoreWebView2ExperimentalCompositionController6_INTERFACE_DEFINED__ */
-
-
-#ifndef __ICoreWebView2ExperimentalDragStartingEventHandler_INTERFACE_DEFINED__
-#define __ICoreWebView2ExperimentalDragStartingEventHandler_INTERFACE_DEFINED__
-
-/* interface ICoreWebView2ExperimentalDragStartingEventHandler */
-/* [unique][object][uuid] */ 
-
-
-EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalDragStartingEventHandler = {0x3b149321,0x83c3,0x5d1f,{0xb0,0x3f,0xa4,0x28,0x99,0xbc,0x1c,0x15}};
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("3b149321-83c3-5d1f-b03f-a42899bc1c15")
-    ICoreWebView2ExperimentalDragStartingEventHandler : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE Invoke( 
-            /* [in] */ ICoreWebView2CompositionController *sender,
-            /* [in] */ ICoreWebView2ExperimentalDragStartingEventArgs *args) = 0;
-        
-    };
-    
-    
-#else 	/* C style interface */
-
-    typedef struct ICoreWebView2ExperimentalDragStartingEventHandlerVtbl
-    {
-        BEGIN_INTERFACE
-        
-        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            ICoreWebView2ExperimentalDragStartingEventHandler * This,
-            /* [in] */ REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppvObject);
-        
-        DECLSPEC_XFGVIRT(IUnknown, AddRef)
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            ICoreWebView2ExperimentalDragStartingEventHandler * This);
-        
-        DECLSPEC_XFGVIRT(IUnknown, Release)
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            ICoreWebView2ExperimentalDragStartingEventHandler * This);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalDragStartingEventHandler, Invoke)
-        HRESULT ( STDMETHODCALLTYPE *Invoke )( 
-            ICoreWebView2ExperimentalDragStartingEventHandler * This,
-            /* [in] */ ICoreWebView2CompositionController *sender,
-            /* [in] */ ICoreWebView2ExperimentalDragStartingEventArgs *args);
-        
-        END_INTERFACE
-    } ICoreWebView2ExperimentalDragStartingEventHandlerVtbl;
-
-    interface ICoreWebView2ExperimentalDragStartingEventHandler
-    {
-        CONST_VTBL struct ICoreWebView2ExperimentalDragStartingEventHandlerVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define ICoreWebView2ExperimentalDragStartingEventHandler_QueryInterface(This,riid,ppvObject)	\
-    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
-
-#define ICoreWebView2ExperimentalDragStartingEventHandler_AddRef(This)	\
-    ( (This)->lpVtbl -> AddRef(This) ) 
-
-#define ICoreWebView2ExperimentalDragStartingEventHandler_Release(This)	\
-    ( (This)->lpVtbl -> Release(This) ) 
-
-
-#define ICoreWebView2ExperimentalDragStartingEventHandler_Invoke(This,sender,args)	\
-    ( (This)->lpVtbl -> Invoke(This,sender,args) ) 
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-
-#endif 	/* __ICoreWebView2ExperimentalDragStartingEventHandler_INTERFACE_DEFINED__ */
-
-
 #ifndef __ICoreWebView2ExperimentalDedicatedWorker_INTERFACE_DEFINED__
 #define __ICoreWebView2ExperimentalDedicatedWorker_INTERFACE_DEFINED__
 
@@ -2021,145 +1828,6 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalDedicatedW
 
 
 #endif 	/* __ICoreWebView2ExperimentalDedicatedWorkerCreatedEventArgs_INTERFACE_DEFINED__ */
-
-
-#ifndef __ICoreWebView2ExperimentalDragStartingEventArgs_INTERFACE_DEFINED__
-#define __ICoreWebView2ExperimentalDragStartingEventArgs_INTERFACE_DEFINED__
-
-/* interface ICoreWebView2ExperimentalDragStartingEventArgs */
-/* [unique][object][uuid] */ 
-
-
-EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalDragStartingEventArgs = {0x5e70e0e8,0x5cd0,0x5cfa,{0x8f,0x6f,0xd9,0x1b,0x48,0xa3,0x75,0x5c}};
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("5e70e0e8-5cd0-5cfa-8f6f-d91b48a3755c")
-    ICoreWebView2ExperimentalDragStartingEventArgs : public IUnknown
-    {
-    public:
-        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_AllowedDropEffects( 
-            /* [retval][out] */ DWORD *value) = 0;
-        
-        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_Data( 
-            /* [retval][out] */ IDataObject **value) = 0;
-        
-        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_Handled( 
-            /* [retval][out] */ BOOL *value) = 0;
-        
-        virtual /* [propput] */ HRESULT STDMETHODCALLTYPE put_Handled( 
-            /* [in] */ BOOL value) = 0;
-        
-        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_Position( 
-            /* [retval][out] */ POINT *value) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE GetDeferral( 
-            /* [retval][out] */ ICoreWebView2Deferral **value) = 0;
-        
-    };
-    
-    
-#else 	/* C style interface */
-
-    typedef struct ICoreWebView2ExperimentalDragStartingEventArgsVtbl
-    {
-        BEGIN_INTERFACE
-        
-        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            ICoreWebView2ExperimentalDragStartingEventArgs * This,
-            /* [in] */ REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppvObject);
-        
-        DECLSPEC_XFGVIRT(IUnknown, AddRef)
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            ICoreWebView2ExperimentalDragStartingEventArgs * This);
-        
-        DECLSPEC_XFGVIRT(IUnknown, Release)
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            ICoreWebView2ExperimentalDragStartingEventArgs * This);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalDragStartingEventArgs, get_AllowedDropEffects)
-        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_AllowedDropEffects )( 
-            ICoreWebView2ExperimentalDragStartingEventArgs * This,
-            /* [retval][out] */ DWORD *value);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalDragStartingEventArgs, get_Data)
-        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_Data )( 
-            ICoreWebView2ExperimentalDragStartingEventArgs * This,
-            /* [retval][out] */ IDataObject **value);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalDragStartingEventArgs, get_Handled)
-        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_Handled )( 
-            ICoreWebView2ExperimentalDragStartingEventArgs * This,
-            /* [retval][out] */ BOOL *value);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalDragStartingEventArgs, put_Handled)
-        /* [propput] */ HRESULT ( STDMETHODCALLTYPE *put_Handled )( 
-            ICoreWebView2ExperimentalDragStartingEventArgs * This,
-            /* [in] */ BOOL value);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalDragStartingEventArgs, get_Position)
-        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_Position )( 
-            ICoreWebView2ExperimentalDragStartingEventArgs * This,
-            /* [retval][out] */ POINT *value);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalDragStartingEventArgs, GetDeferral)
-        HRESULT ( STDMETHODCALLTYPE *GetDeferral )( 
-            ICoreWebView2ExperimentalDragStartingEventArgs * This,
-            /* [retval][out] */ ICoreWebView2Deferral **value);
-        
-        END_INTERFACE
-    } ICoreWebView2ExperimentalDragStartingEventArgsVtbl;
-
-    interface ICoreWebView2ExperimentalDragStartingEventArgs
-    {
-        CONST_VTBL struct ICoreWebView2ExperimentalDragStartingEventArgsVtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define ICoreWebView2ExperimentalDragStartingEventArgs_QueryInterface(This,riid,ppvObject)	\
-    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
-
-#define ICoreWebView2ExperimentalDragStartingEventArgs_AddRef(This)	\
-    ( (This)->lpVtbl -> AddRef(This) ) 
-
-#define ICoreWebView2ExperimentalDragStartingEventArgs_Release(This)	\
-    ( (This)->lpVtbl -> Release(This) ) 
-
-
-#define ICoreWebView2ExperimentalDragStartingEventArgs_get_AllowedDropEffects(This,value)	\
-    ( (This)->lpVtbl -> get_AllowedDropEffects(This,value) ) 
-
-#define ICoreWebView2ExperimentalDragStartingEventArgs_get_Data(This,value)	\
-    ( (This)->lpVtbl -> get_Data(This,value) ) 
-
-#define ICoreWebView2ExperimentalDragStartingEventArgs_get_Handled(This,value)	\
-    ( (This)->lpVtbl -> get_Handled(This,value) ) 
-
-#define ICoreWebView2ExperimentalDragStartingEventArgs_put_Handled(This,value)	\
-    ( (This)->lpVtbl -> put_Handled(This,value) ) 
-
-#define ICoreWebView2ExperimentalDragStartingEventArgs_get_Position(This,value)	\
-    ( (This)->lpVtbl -> get_Position(This,value) ) 
-
-#define ICoreWebView2ExperimentalDragStartingEventArgs_GetDeferral(This,value)	\
-    ( (This)->lpVtbl -> GetDeferral(This,value) ) 
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-
-#endif 	/* __ICoreWebView2ExperimentalDragStartingEventArgs_INTERFACE_DEFINED__ */
 
 
 #ifndef __ICoreWebView2ExperimentalEnvironment3_INTERFACE_DEFINED__
@@ -2722,6 +2390,113 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalRestartReq
 
 
 #endif 	/* __ICoreWebView2ExperimentalRestartRequestedEventHandler_INTERFACE_DEFINED__ */
+
+
+#ifndef __ICoreWebView2ExperimentalEnvironmentOptions_INTERFACE_DEFINED__
+#define __ICoreWebView2ExperimentalEnvironmentOptions_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2ExperimentalEnvironmentOptions */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalEnvironmentOptions = {0x2c0f597d,0x2958,0x5a94,{0x82,0xf9,0xc7,0x50,0xcf,0x86,0xcb,0x88}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("2c0f597d-2958-5a94-82f9-c750cf86cb88")
+    ICoreWebView2ExperimentalEnvironmentOptions : public IUnknown
+    {
+    public:
+        virtual HRESULT STDMETHODCALLTYPE SetAllowedPortRange( 
+            /* [in] */ COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE scope,
+            /* [in] */ COREWEBVIEW2_TRANSPORT_PROTOCOL_KIND protocol,
+            /* [in] */ INT32 minPort,
+            /* [in] */ INT32 maxPort) = 0;
+        
+        virtual HRESULT STDMETHODCALLTYPE GetEffectiveAllowedPortRange( 
+            /* [in] */ COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE scope,
+            /* [in] */ COREWEBVIEW2_TRANSPORT_PROTOCOL_KIND protocol,
+            /* [out] */ INT32 *minPort,
+            /* [out] */ INT32 *maxPort) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2ExperimentalEnvironmentOptionsVtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2ExperimentalEnvironmentOptions * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2ExperimentalEnvironmentOptions * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2ExperimentalEnvironmentOptions * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalEnvironmentOptions, SetAllowedPortRange)
+        HRESULT ( STDMETHODCALLTYPE *SetAllowedPortRange )( 
+            ICoreWebView2ExperimentalEnvironmentOptions * This,
+            /* [in] */ COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE scope,
+            /* [in] */ COREWEBVIEW2_TRANSPORT_PROTOCOL_KIND protocol,
+            /* [in] */ INT32 minPort,
+            /* [in] */ INT32 maxPort);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalEnvironmentOptions, GetEffectiveAllowedPortRange)
+        HRESULT ( STDMETHODCALLTYPE *GetEffectiveAllowedPortRange )( 
+            ICoreWebView2ExperimentalEnvironmentOptions * This,
+            /* [in] */ COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE scope,
+            /* [in] */ COREWEBVIEW2_TRANSPORT_PROTOCOL_KIND protocol,
+            /* [out] */ INT32 *minPort,
+            /* [out] */ INT32 *maxPort);
+        
+        END_INTERFACE
+    } ICoreWebView2ExperimentalEnvironmentOptionsVtbl;
+
+    interface ICoreWebView2ExperimentalEnvironmentOptions
+    {
+        CONST_VTBL struct ICoreWebView2ExperimentalEnvironmentOptionsVtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2ExperimentalEnvironmentOptions_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2ExperimentalEnvironmentOptions_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2ExperimentalEnvironmentOptions_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2ExperimentalEnvironmentOptions_SetAllowedPortRange(This,scope,protocol,minPort,maxPort)	\
+    ( (This)->lpVtbl -> SetAllowedPortRange(This,scope,protocol,minPort,maxPort) ) 
+
+#define ICoreWebView2ExperimentalEnvironmentOptions_GetEffectiveAllowedPortRange(This,scope,protocol,minPort,maxPort)	\
+    ( (This)->lpVtbl -> GetEffectiveAllowedPortRange(This,scope,protocol,minPort,maxPort) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2ExperimentalEnvironmentOptions_INTERFACE_DEFINED__ */
 
 
 #ifndef __ICoreWebView2ExperimentalFrame7_INTERFACE_DEFINED__
@@ -7227,103 +7002,6 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalWindowCont
 
 
 #endif 	/* __ICoreWebView2ExperimentalWindowControlsOverlay_INTERFACE_DEFINED__ */
-
-
-#ifndef __ICoreWebView2ExperimentalCompositionControllerInterop3_INTERFACE_DEFINED__
-#define __ICoreWebView2ExperimentalCompositionControllerInterop3_INTERFACE_DEFINED__
-
-/* interface ICoreWebView2ExperimentalCompositionControllerInterop3 */
-/* [unique][object][uuid] */ 
-
-
-EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalCompositionControllerInterop3 = {0x6b0bf729,0x3d27,0x46c6,{0x90,0x1c,0x5f,0x15,0x16,0xd3,0x2d,0xe1}};
-
-#if defined(__cplusplus) && !defined(CINTERFACE)
-    
-    MIDL_INTERFACE("6b0bf729-3d27-46c6-901c-5f1516d32de1")
-    ICoreWebView2ExperimentalCompositionControllerInterop3 : public IUnknown
-    {
-    public:
-        virtual HRESULT STDMETHODCALLTYPE add_DragStarting( 
-            /* [in] */ ICoreWebView2ExperimentalDragStartingEventHandler *eventHandler,
-            /* [out] */ EventRegistrationToken *token) = 0;
-        
-        virtual HRESULT STDMETHODCALLTYPE remove_DragStarting( 
-            /* [in] */ EventRegistrationToken token) = 0;
-        
-    };
-    
-    
-#else 	/* C style interface */
-
-    typedef struct ICoreWebView2ExperimentalCompositionControllerInterop3Vtbl
-    {
-        BEGIN_INTERFACE
-        
-        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
-        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            ICoreWebView2ExperimentalCompositionControllerInterop3 * This,
-            /* [in] */ REFIID riid,
-            /* [annotation][iid_is][out] */ 
-            _COM_Outptr_  void **ppvObject);
-        
-        DECLSPEC_XFGVIRT(IUnknown, AddRef)
-        ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            ICoreWebView2ExperimentalCompositionControllerInterop3 * This);
-        
-        DECLSPEC_XFGVIRT(IUnknown, Release)
-        ULONG ( STDMETHODCALLTYPE *Release )( 
-            ICoreWebView2ExperimentalCompositionControllerInterop3 * This);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalCompositionControllerInterop3, add_DragStarting)
-        HRESULT ( STDMETHODCALLTYPE *add_DragStarting )( 
-            ICoreWebView2ExperimentalCompositionControllerInterop3 * This,
-            /* [in] */ ICoreWebView2ExperimentalDragStartingEventHandler *eventHandler,
-            /* [out] */ EventRegistrationToken *token);
-        
-        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalCompositionControllerInterop3, remove_DragStarting)
-        HRESULT ( STDMETHODCALLTYPE *remove_DragStarting )( 
-            ICoreWebView2ExperimentalCompositionControllerInterop3 * This,
-            /* [in] */ EventRegistrationToken token);
-        
-        END_INTERFACE
-    } ICoreWebView2ExperimentalCompositionControllerInterop3Vtbl;
-
-    interface ICoreWebView2ExperimentalCompositionControllerInterop3
-    {
-        CONST_VTBL struct ICoreWebView2ExperimentalCompositionControllerInterop3Vtbl *lpVtbl;
-    };
-
-    
-
-#ifdef COBJMACROS
-
-
-#define ICoreWebView2ExperimentalCompositionControllerInterop3_QueryInterface(This,riid,ppvObject)	\
-    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
-
-#define ICoreWebView2ExperimentalCompositionControllerInterop3_AddRef(This)	\
-    ( (This)->lpVtbl -> AddRef(This) ) 
-
-#define ICoreWebView2ExperimentalCompositionControllerInterop3_Release(This)	\
-    ( (This)->lpVtbl -> Release(This) ) 
-
-
-#define ICoreWebView2ExperimentalCompositionControllerInterop3_add_DragStarting(This,eventHandler,token)	\
-    ( (This)->lpVtbl -> add_DragStarting(This,eventHandler,token) ) 
-
-#define ICoreWebView2ExperimentalCompositionControllerInterop3_remove_DragStarting(This,token)	\
-    ( (This)->lpVtbl -> remove_DragStarting(This,token) ) 
-
-#endif /* COBJMACROS */
-
-
-#endif 	/* C style interface */
-
-
-
-
-#endif 	/* __ICoreWebView2ExperimentalCompositionControllerInterop3_INTERFACE_DEFINED__ */
 
 #endif /* __WebView2Experimental_LIBRARY_DEFINED__ */
 

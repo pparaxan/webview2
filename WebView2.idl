@@ -108,9 +108,12 @@ interface ICoreWebView2CompositionController3;
 interface ICoreWebView2CompositionController4;
 interface ICoreWebView2NonClientRegionChangedEventHandler;
 interface ICoreWebView2RegionRectCollectionView;
+interface ICoreWebView2CompositionController5;
+interface ICoreWebView2DragStartingEventHandler;
 interface ICoreWebView2ContentLoadingEventArgs;
 interface ICoreWebView2ContextMenuItem;
 interface ICoreWebView2CustomItemSelectedEventHandler;
+interface ICoreWebView2ContextMenuItemCollection;
 interface ICoreWebView2ContextMenuRequestedEventArgs;
 interface ICoreWebView2ContextMenuTarget;
 interface ICoreWebView2Controller;
@@ -143,6 +146,7 @@ interface ICoreWebView2BytesReceivedChangedEventHandler;
 interface ICoreWebView2EstimatedEndTimeChangedEventHandler;
 interface ICoreWebView2StateChangedEventHandler;
 interface ICoreWebView2DownloadStartingEventArgs;
+interface ICoreWebView2DragStartingEventArgs;
 interface ICoreWebView2Environment;
 interface ICoreWebView2NewBrowserVersionAvailableEventHandler;
 interface ICoreWebView2CreateCoreWebView2ControllerCompletedHandler;
@@ -207,6 +211,7 @@ interface ICoreWebView2FrameChildFrameCreatedEventHandler;
 interface ICoreWebView2FrameCreatedEventArgs;
 interface ICoreWebView2FrameInfo;
 interface ICoreWebView2FrameInfo2;
+interface ICoreWebView2FrameInfoCollection;
 interface ICoreWebView2FrameInfoCollectionIterator;
 interface ICoreWebView2HttpHeadersCollectionIterator;
 interface ICoreWebView2HttpRequestHeaders;
@@ -226,8 +231,6 @@ interface ICoreWebView2Notification;
 interface ICoreWebView2NotificationCloseRequestedEventHandler;
 interface ICoreWebView2NotificationReceivedEventArgs;
 interface ICoreWebView2ObjectCollectionView;
-interface ICoreWebView2ContextMenuItemCollection;
-interface ICoreWebView2FrameInfoCollection;
 interface ICoreWebView2ObjectCollection;
 interface ICoreWebView2PermissionRequestedEventArgs;
 interface ICoreWebView2PermissionRequestedEventArgs2;
@@ -7302,6 +7305,49 @@ interface ICoreWebView2CompositionController2 : ICoreWebView2CompositionControll
 }
 
 
+/// Receives `DragStarting` events.
+[uuid(3b149321-83c3-5d1f-b03f-a42899bc1c15), object, pointer_default(unique)]
+interface ICoreWebView2DragStartingEventHandler : IUnknown {
+  /// Provides the event args for the corresponding event.
+  HRESULT Invoke(
+      [in] ICoreWebView2CompositionController* sender,
+      [in] ICoreWebView2DragStartingEventArgs* args);
+}
+
+
+/// A continuation of the ICoreWebView2CompositionController4 interface.
+/// This interface includes an API which exposes the DragStarting event.
+[uuid(8d0f82eb-7c33-5a4c-9108-84ca28ccc3b4), object, pointer_default(unique)]
+interface ICoreWebView2CompositionController5 : ICoreWebView2CompositionController4 {
+  /// Adds an event handler for the `DragStarting` event.
+  /// `DragStarting` is a deferrable event that is raised when the WebView2
+  /// detects a drag started within the WebView2.
+  /// WebView2's default drag behavior is to synchronously call DoDragDrop when
+  /// it detects drag. This event's args expose the data WebView2 uses to call
+  /// DoDragDrop to allow users to implement their own drag logic and override
+  /// WebView2's.
+  /// Handlers of this event must set the `Handled` event to true in order to
+  /// override WebView2's default logic. When invoking drag logic asynchronously
+  /// using a deferral, handlers must take care to follow these steps in order:
+  ///   * Invoke asynchronous drag logic
+  ///   * Set the event args `Handled` property true
+  ///   * Complete the deferral
+  /// In the asynchronous case, WebView2 decides whether or not to invoke its
+  /// default drag logic when the deferral completes. So the event args'
+  /// `Handled` property must be true when the deferral is completed.
+  /// \snippet ScenarioDragDropOverride.cpp DragStarting
+  HRESULT add_DragStarting(
+      [in] ICoreWebView2DragStartingEventHandler* eventHandler,
+      [out] EventRegistrationToken* token);
+
+  /// Removes an event handler previously added with `add_DragStarting`.
+  HRESULT remove_DragStarting(
+      [in] EventRegistrationToken token);
+
+
+}
+
+
 
 /// Event args for the `ContentLoading` event.
 [uuid(0c8a1275-9b6b-4901-87ad-70df25bafa6e), object, pointer_default(unique)]
@@ -7633,6 +7679,49 @@ interface ICoreWebView2DevToolsProtocolEventReceiver : IUnknown {
   /// Removes an event handler previously added with `add_DevToolsProtocolEventReceived`.
   HRESULT remove_DevToolsProtocolEventReceived(
       [in] EventRegistrationToken token);
+
+
+}
+
+
+
+/// Event args for the `DragStarting` event.
+[uuid(8b8d9c7e-2f1a-4e6b-9d5a-3c8f7b9e1a2d), object, pointer_default(unique)]
+interface ICoreWebView2DragStartingEventArgs : IUnknown {
+  /// The [OLE DROPEFFECT](/windows/win32/com/dropeffect-constants)
+  /// values this drag data supports.
+  [propget] HRESULT AllowedDropEffects([out, retval] DWORD* value);
+
+
+  /// The data to be dragged.
+  [propget] HRESULT Data([out, retval] IDataObject** value);
+
+
+  /// Gets the `Handled` property.
+  [propget] HRESULT Handled([out, retval] BOOL* value);
+
+
+  /// Indicates whether this event has been handled by the app.  If the
+  /// app handles this event, WebView2 will not initiate drag drop.  If
+  /// the app does not handle the event, WebView2 will initiate its own
+  /// drag drop logic.
+  [propput] HRESULT Handled([in] BOOL value);
+
+
+  /// The position at which drag was detected given in WebView2 relative
+  /// coordinates
+  [propget] HRESULT Position([out, retval] POINT* value);
+
+
+
+  /// Returns an `ICoreWebView2Deferral` object. Use this operation to complete
+  /// the CoreWebView2DragStartingEventArgs.
+  /// 
+  /// Until the deferral is completed, subsequent attempts to initiate drag
+  /// in the WebView2 will fail and if the cursor was changed as part of
+  /// drag it will not restore.
+  HRESULT GetDeferral(
+      [out, retval] ICoreWebView2Deferral** value);
 
 
 }
