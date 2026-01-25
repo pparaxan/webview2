@@ -34,6 +34,7 @@ interface ICoreWebView2ExperimentalFrameDedicatedWorkerCreatedEventHandler;
 interface ICoreWebView2ExperimentalMipSensitivityLabel;
 interface ICoreWebView2ExperimentalProfile7;
 interface ICoreWebView2ExperimentalClearCustomDataPartitionCompletedHandler;
+interface ICoreWebView2ExperimentalProfile9;
 interface ICoreWebView2ExperimentalProfile13;
 interface ICoreWebView2ExperimentalProfile14;
 interface ICoreWebView2ExperimentalRestartRequestedEventArgs;
@@ -83,6 +84,21 @@ typedef enum COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE {
   /// Applies only to WebRTC peer-to-peer connection.
   COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE_WEB_RTC,
 } COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE;
+
+/// Enhanced Security Mode levels.
+[v1_enum]
+typedef enum COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL {
+  /// Enhanced Security Mode is turned off.
+  COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL_OFF,
+  /// Enhanced Security Mode is enabled in Strict level. Disables JavaScript
+  /// Just-in-Time (JIT) compilation and enables additional operating system protections.
+  /// 
+  /// This level applies enhanced security for all sites but may reduce JavaScript performance.
+  /// 
+  /// See [Enhanced Security Mode](https://learn.microsoft.com/en-us/DeployEdge/microsoft-edge-security-browse-safer)
+  /// for more details on what protections are enabled with this level.
+  COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL_STRICT,
+} COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL;
 
 /// Specifies the restart requested priority level.
 [v1_enum]
@@ -1105,6 +1121,35 @@ interface ICoreWebView2ExperimentalProfile14 : IUnknown {
       [in] UINT32 allowlistCount,
       [in] LPCWSTR* allowlist
   );
+
+
+}
+
+
+
+/// This is an interface to control Enhanced Security Mode (ESM) level.
+[uuid(7e03d996-8ccf-5fe3-8e09-9c0260317769), object, pointer_default(unique)]
+interface ICoreWebView2ExperimentalProfile9 : IUnknown {
+  /// Gets the `EnhancedSecurityModeLevel` property.
+  [propget] HRESULT EnhancedSecurityModeLevel([out, retval] COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL* value);
+
+
+  /// The `EnhancedSecurityModeLevel` property allows you to control the Enhanced Security 
+  /// Mode level for WebView2 instances associated with a profile. This level applies to the context of the profile. That is, all WebViews sharing the same profile are affected.
+  /// The configuration is not persisted to the user data folder. The property is reset when the profile is recreated.
+  /// 
+  /// The default value is `COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL_OFF`.
+  /// 
+  /// When set to `Off`, Enhanced Security Mode is disabled. When set to 
+  /// `Strict`, the Enhanced Security Mode feature is enabled in Strict level.
+  /// 
+  /// See `COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL` for descriptions of levels.
+  /// 
+  /// Changes apply immediately to new navigation. Existing pages require a reload for the change to take effect.
+  /// 
+  /// \snippet SettingsComponent.cpp SetEnhancedSecurityModeLevel
+  [propput] HRESULT EnhancedSecurityModeLevel([in] COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL value);
+
 
 
 }

@@ -224,6 +224,13 @@ typedef interface ICoreWebView2ExperimentalClearCustomDataPartitionCompletedHand
 #endif 	/* __ICoreWebView2ExperimentalClearCustomDataPartitionCompletedHandler_FWD_DEFINED__ */
 
 
+#ifndef __ICoreWebView2ExperimentalProfile9_FWD_DEFINED__
+#define __ICoreWebView2ExperimentalProfile9_FWD_DEFINED__
+typedef interface ICoreWebView2ExperimentalProfile9 ICoreWebView2ExperimentalProfile9;
+
+#endif 	/* __ICoreWebView2ExperimentalProfile9_FWD_DEFINED__ */
+
+
 #ifndef __ICoreWebView2ExperimentalProfile13_FWD_DEFINED__
 #define __ICoreWebView2ExperimentalProfile13_FWD_DEFINED__
 typedef interface ICoreWebView2ExperimentalProfile13 ICoreWebView2ExperimentalProfile13;
@@ -568,12 +575,20 @@ extern "C"{
 
 
 
+
 typedef /* [v1_enum] */ 
 enum COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE
     {
         COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE_DEFAULT	= 0,
         COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE_WEB_RTC	= ( COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE_DEFAULT + 1 ) 
     } 	COREWEBVIEW2_ALLOWED_PORT_RANGE_SCOPE;
+
+typedef /* [v1_enum] */ 
+enum COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL
+    {
+        COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL_OFF	= 0,
+        COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL_STRICT	= ( COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL_OFF + 1 ) 
+    } 	COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL;
 
 typedef /* [v1_enum] */ 
 enum COREWEBVIEW2_RESTART_REQUESTED_PRIORITY
@@ -3040,6 +3055,101 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalClearCusto
 
 
 #endif 	/* __ICoreWebView2ExperimentalClearCustomDataPartitionCompletedHandler_INTERFACE_DEFINED__ */
+
+
+#ifndef __ICoreWebView2ExperimentalProfile9_INTERFACE_DEFINED__
+#define __ICoreWebView2ExperimentalProfile9_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2ExperimentalProfile9 */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalProfile9 = {0x7e03d996,0x8ccf,0x5fe3,{0x8e,0x09,0x9c,0x02,0x60,0x31,0x77,0x69}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("7e03d996-8ccf-5fe3-8e09-9c0260317769")
+    ICoreWebView2ExperimentalProfile9 : public IUnknown
+    {
+    public:
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_EnhancedSecurityModeLevel( 
+            /* [retval][out] */ COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL *value) = 0;
+        
+        virtual /* [propput] */ HRESULT STDMETHODCALLTYPE put_EnhancedSecurityModeLevel( 
+            /* [in] */ COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL value) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2ExperimentalProfile9Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2ExperimentalProfile9 * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2ExperimentalProfile9 * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2ExperimentalProfile9 * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalProfile9, get_EnhancedSecurityModeLevel)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_EnhancedSecurityModeLevel )( 
+            ICoreWebView2ExperimentalProfile9 * This,
+            /* [retval][out] */ COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL *value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalProfile9, put_EnhancedSecurityModeLevel)
+        /* [propput] */ HRESULT ( STDMETHODCALLTYPE *put_EnhancedSecurityModeLevel )( 
+            ICoreWebView2ExperimentalProfile9 * This,
+            /* [in] */ COREWEBVIEW2_ENHANCED_SECURITY_MODE_LEVEL value);
+        
+        END_INTERFACE
+    } ICoreWebView2ExperimentalProfile9Vtbl;
+
+    interface ICoreWebView2ExperimentalProfile9
+    {
+        CONST_VTBL struct ICoreWebView2ExperimentalProfile9Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2ExperimentalProfile9_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2ExperimentalProfile9_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2ExperimentalProfile9_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2ExperimentalProfile9_get_EnhancedSecurityModeLevel(This,value)	\
+    ( (This)->lpVtbl -> get_EnhancedSecurityModeLevel(This,value) ) 
+
+#define ICoreWebView2ExperimentalProfile9_put_EnhancedSecurityModeLevel(This,value)	\
+    ( (This)->lpVtbl -> put_EnhancedSecurityModeLevel(This,value) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2ExperimentalProfile9_INTERFACE_DEFINED__ */
 
 
 #ifndef __ICoreWebView2ExperimentalProfile13_INTERFACE_DEFINED__
