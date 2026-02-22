@@ -245,6 +245,13 @@ typedef interface ICoreWebView2ExperimentalProfile14 ICoreWebView2ExperimentalPr
 #endif 	/* __ICoreWebView2ExperimentalProfile14_FWD_DEFINED__ */
 
 
+#ifndef __ICoreWebView2ExperimentalProfile15_FWD_DEFINED__
+#define __ICoreWebView2ExperimentalProfile15_FWD_DEFINED__
+typedef interface ICoreWebView2ExperimentalProfile15 ICoreWebView2ExperimentalProfile15;
+
+#endif 	/* __ICoreWebView2ExperimentalProfile15_FWD_DEFINED__ */
+
+
 #ifndef __ICoreWebView2ExperimentalRestartRequestedEventArgs_FWD_DEFINED__
 #define __ICoreWebView2ExperimentalRestartRequestedEventArgs_FWD_DEFINED__
 typedef interface ICoreWebView2ExperimentalRestartRequestedEventArgs ICoreWebView2ExperimentalRestartRequestedEventArgs;
@@ -511,6 +518,7 @@ extern "C"{
 
 /* library WebView2Experimental */
 /* [version][uuid] */ 
+
 
 
 
@@ -3331,6 +3339,101 @@ EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalProfile14 
 
 
 #endif 	/* __ICoreWebView2ExperimentalProfile14_INTERFACE_DEFINED__ */
+
+
+#ifndef __ICoreWebView2ExperimentalProfile15_INTERFACE_DEFINED__
+#define __ICoreWebView2ExperimentalProfile15_INTERFACE_DEFINED__
+
+/* interface ICoreWebView2ExperimentalProfile15 */
+/* [unique][object][uuid] */ 
+
+
+EXTERN_C __declspec(selectany) const IID IID_ICoreWebView2ExperimentalProfile15 = {0xe4ad1fc2,0xc843,0x5589,{0x8c,0xcc,0xfc,0xd2,0x7e,0x66,0xf6,0xc3}};
+
+#if defined(__cplusplus) && !defined(CINTERFACE)
+    
+    MIDL_INTERFACE("e4ad1fc2-c843-5589-8ccc-fcd27e66f6c3")
+    ICoreWebView2ExperimentalProfile15 : public IUnknown
+    {
+    public:
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_AreWebViewScriptApisEnabledForServiceWorkers( 
+            /* [retval][out] */ BOOL *value) = 0;
+        
+        virtual /* [propput] */ HRESULT STDMETHODCALLTYPE put_AreWebViewScriptApisEnabledForServiceWorkers( 
+            /* [in] */ BOOL value) = 0;
+        
+    };
+    
+    
+#else 	/* C style interface */
+
+    typedef struct ICoreWebView2ExperimentalProfile15Vtbl
+    {
+        BEGIN_INTERFACE
+        
+        DECLSPEC_XFGVIRT(IUnknown, QueryInterface)
+        HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
+            ICoreWebView2ExperimentalProfile15 * This,
+            /* [in] */ REFIID riid,
+            /* [annotation][iid_is][out] */ 
+            _COM_Outptr_  void **ppvObject);
+        
+        DECLSPEC_XFGVIRT(IUnknown, AddRef)
+        ULONG ( STDMETHODCALLTYPE *AddRef )( 
+            ICoreWebView2ExperimentalProfile15 * This);
+        
+        DECLSPEC_XFGVIRT(IUnknown, Release)
+        ULONG ( STDMETHODCALLTYPE *Release )( 
+            ICoreWebView2ExperimentalProfile15 * This);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalProfile15, get_AreWebViewScriptApisEnabledForServiceWorkers)
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_AreWebViewScriptApisEnabledForServiceWorkers )( 
+            ICoreWebView2ExperimentalProfile15 * This,
+            /* [retval][out] */ BOOL *value);
+        
+        DECLSPEC_XFGVIRT(ICoreWebView2ExperimentalProfile15, put_AreWebViewScriptApisEnabledForServiceWorkers)
+        /* [propput] */ HRESULT ( STDMETHODCALLTYPE *put_AreWebViewScriptApisEnabledForServiceWorkers )( 
+            ICoreWebView2ExperimentalProfile15 * This,
+            /* [in] */ BOOL value);
+        
+        END_INTERFACE
+    } ICoreWebView2ExperimentalProfile15Vtbl;
+
+    interface ICoreWebView2ExperimentalProfile15
+    {
+        CONST_VTBL struct ICoreWebView2ExperimentalProfile15Vtbl *lpVtbl;
+    };
+
+    
+
+#ifdef COBJMACROS
+
+
+#define ICoreWebView2ExperimentalProfile15_QueryInterface(This,riid,ppvObject)	\
+    ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
+
+#define ICoreWebView2ExperimentalProfile15_AddRef(This)	\
+    ( (This)->lpVtbl -> AddRef(This) ) 
+
+#define ICoreWebView2ExperimentalProfile15_Release(This)	\
+    ( (This)->lpVtbl -> Release(This) ) 
+
+
+#define ICoreWebView2ExperimentalProfile15_get_AreWebViewScriptApisEnabledForServiceWorkers(This,value)	\
+    ( (This)->lpVtbl -> get_AreWebViewScriptApisEnabledForServiceWorkers(This,value) ) 
+
+#define ICoreWebView2ExperimentalProfile15_put_AreWebViewScriptApisEnabledForServiceWorkers(This,value)	\
+    ( (This)->lpVtbl -> put_AreWebViewScriptApisEnabledForServiceWorkers(This,value) ) 
+
+#endif /* COBJMACROS */
+
+
+#endif 	/* C style interface */
+
+
+
+
+#endif 	/* __ICoreWebView2ExperimentalProfile15_INTERFACE_DEFINED__ */
 
 
 #ifndef __ICoreWebView2ExperimentalRestartRequestedEventArgs_INTERFACE_DEFINED__

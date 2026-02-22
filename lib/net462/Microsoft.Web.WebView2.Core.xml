@@ -6245,6 +6245,7 @@
             <summary></summary>
             <summary></summary>
             <summary></summary>
+            <summary></summary>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2Profile.ClearCustomDataPartitionAsync(System.String)">
             <summary>
@@ -6294,6 +6295,15 @@
             <summary>
             Get the <see cref="T:Microsoft.Web.WebView2.Core.CoreWebView2SharedWorkerManager" /> instance to monitor shared worker creations
             and interact with the shared worker associated with the current profile.</summary>
+        </member>
+        <member name="P:Microsoft.Web.WebView2.Core.CoreWebView2Profile.AreWebViewScriptApisEnabledForServiceWorkers">
+            <summary>
+            Enables or disables WebView2 specific Service Worker JS APIs in the
+            WebView2s associated with this Profile. When set to <c>true</c>, <c>chrome</c> and
+            <c>webview</c> objects are available in Service Workers. <c>chrome.webview</c> exposes
+            APIs to interact with the WebView from Service Workers. The default value
+            is <c>false</c>. This setting applies to all newly installed Service Workers
+            within the profile and is not persisted across WebView2 sessions.</summary>
         </member>
         <member name="M:Microsoft.Web.WebView2.Core.CoreWebView2Profile.ClearBrowsingDataAsync(Microsoft.Web.WebView2.Core.CoreWebView2BrowsingDataKinds)">
             <summary>
@@ -6667,8 +6677,9 @@
             self.chrome.webview.removeEventListener('message', handler)
             ```
             
-            The event args is an instance of `MessageEvent`. The
-            `ICoreWebView2Settings::IsWebMessageEnabled` setting must be `TRUE` or
+            The event args is an instance of `MessageEvent`. Both the
+            `ICoreWebView2Profile::AreWebViewScriptApisEnabledForServiceWorkers` and
+            `ICoreWebView2Settings::IsWebMessageEnabled` settings must be `TRUE` or
             the web message will not be sent. The `data` property of the event arg 
             is the `webMessageAsJson` string parameter parsed as a JSON string into a 
             JS object. The `source` property of the event arg is the path

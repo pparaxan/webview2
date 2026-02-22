@@ -37,6 +37,7 @@ interface ICoreWebView2ExperimentalClearCustomDataPartitionCompletedHandler;
 interface ICoreWebView2ExperimentalProfile9;
 interface ICoreWebView2ExperimentalProfile13;
 interface ICoreWebView2ExperimentalProfile14;
+interface ICoreWebView2ExperimentalProfile15;
 interface ICoreWebView2ExperimentalRestartRequestedEventArgs;
 interface ICoreWebView2ExperimentalSensitivityInfo;
 interface ICoreWebView2ExperimentalSensitivityLabelCollectionView;
@@ -1127,6 +1128,28 @@ interface ICoreWebView2ExperimentalProfile14 : IUnknown {
 
 
 
+/// A continuation of the ICoreWebView2Profile interface to manage Service Worker JS APIs.
+[uuid(e4ad1fc2-c843-5589-8ccc-fcd27e66f6c3), object, pointer_default(unique)]
+interface ICoreWebView2ExperimentalProfile15 : IUnknown {
+  /// Gets the `AreWebViewScriptApisEnabledForServiceWorkers` property.
+  [propget] HRESULT AreWebViewScriptApisEnabledForServiceWorkers([out, retval] BOOL* value);
+
+
+  /// Enables or disables webview2 specific Service Worker JS APIs in the
+  /// WebView2s associated with this Profile. When set to `TRUE`, chrome and
+  /// webview objects are available in Service Workers. chrome.webview exposes
+  /// APIs to interact with the WebView from Service Workers. The default value
+  /// is `FALSE`. This setting applies to all newly installed Service Workers
+  /// within the profile and is not persisted across WebView2 sessions.
+  /// \snippet ScenarioServiceWorkerPostMessageSetting.cpp AreWebViewScriptApisEnabledForServiceWorkers
+  [propput] HRESULT AreWebViewScriptApisEnabledForServiceWorkers([in] BOOL value);
+
+
+
+}
+
+
+
 /// This is an interface to control Enhanced Security Mode (ESM) level.
 [uuid(7e03d996-8ccf-5fe3-8e09-9c0260317769), object, pointer_default(unique)]
 interface ICoreWebView2ExperimentalProfile9 : IUnknown {
@@ -1320,8 +1343,9 @@ interface ICoreWebView2ExperimentalServiceWorker : IUnknown {
   /// self.chrome.webview.removeEventListener('message', handler)
   /// ```
   /// 
-  /// The event args is an instance of `MessageEvent`. The
-  /// `ICoreWebView2Settings::IsWebMessageEnabled` setting must be `TRUE` or
+  /// The event args is an instance of `MessageEvent`. Both the
+  /// `ICoreWebView2Profile::AreWebViewScriptApisEnabledForServiceWorkers` and
+  /// `ICoreWebView2Settings::IsWebMessageEnabled` settings must be `TRUE` or
   /// the web message will not be sent. The `data` property of the event arg 
   /// is the `webMessageAsJson` string parameter parsed as a JSON string into a 
   /// JS object. The `source` property of the event arg is the path
